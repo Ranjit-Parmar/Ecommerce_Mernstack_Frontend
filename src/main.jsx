@@ -29,7 +29,6 @@ import { Toaster } from 'react-hot-toast';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute.jsx';
 import ProtectedAdminRoute from './components/admin/protectedAdminRoute/ProtectedAdminRoute.jsx';
 import { loadUser } from './redux/reducers/userReducer.js';
-
 import UpdateProduct from './components/admin/update_product/UpdateProduct.jsx';
 import Products from './pages/admin/Products.jsx';
 import EditAdminProfile from './components/admin/edit_profile/EditAdminProfile.jsx';
