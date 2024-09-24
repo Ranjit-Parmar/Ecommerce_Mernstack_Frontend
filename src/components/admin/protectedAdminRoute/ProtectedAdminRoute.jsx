@@ -24,7 +24,7 @@ const ProtectedAdminRoute = ({children}) => {
     },[data,dispatch,children])
     
     
-    if(data?.response?.status === 400 || data?.response?.status === 500){
+    if(data?.response?.status === 500 || data?.response?.status === 401){
         
         return <Navigate to={'/login-signup'} replace={true}/>
     }

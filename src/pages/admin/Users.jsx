@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { Helmet } from 'react-helmet-async'
+import profileIcon from '../../assets/profile-icon.png';
 
 
 const Users = () => {
@@ -96,7 +97,7 @@ const Users = () => {
 
                                 <td className="px-4 py-2">
                                     <div className=" rounded-full  w-10 h-10 mr-2 md:block bg-gray-50">
-                                        <img className="object-cover w-full h-full rounded-full" src={val?.photo?.url[0]} alt="product" />
+                                        <img className="object-cover w-full h-full rounded-full" src={val?.photo?.url[0] || profileIcon} alt="product" />
                                     </div>
                                 </td>
                                 <td className="px-4 py-2">
