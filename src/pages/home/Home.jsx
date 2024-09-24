@@ -7,6 +7,13 @@ import model2 from '../../assets/model2.jpg'
 import clothing9 from '../../assets/clothing9.jpg'
 import gadget14 from '../../assets/gadget14.jpg'
 import spectacle3 from '../../assets/spectacle3.jpg'
+import tshirt from "../../assets/Tshirt.jpg"
+import shirt from "../../assets/Shirt.jpg"
+import jeans from "../../assets/Jeans.jpg"
+import shorts from "../../assets/Shorts.jpg"
+import jogger from "../../assets/jogger.webp"
+import topwear from "../../assets/Topwear.jpg"
+import kidswear from "../../assets/Kidswear.webp"
 import shoes2 from '../../assets/shoes2.jpg'
 import { useNavigate } from 'react-router-dom'
 import { useGetAllProductsQuery } from '../../redux/Api/productApi'
@@ -15,49 +22,49 @@ import { Helmet } from 'react-helmet-async'
 const dummyData = [
   {
     id: 1,
-    img: "../../assets/Tshirt.jpg",
+    img: tshirt,
     name: "T-Shirts",
     discount: "40 to 80% OFF",
     task: "shop now"
   },
   {
     id: 2,
-    img: "../../assets/Shirt.jpg",
+    img: shirt,
     name: "Shirt",
     discount: "50 to 90% OFF",
     task: "shop now"
   },
   {
     id: 3,
-    img: "../../assets/Jeans.jpg",
+    img: jeans,
     name: "Jeans",
     discount: "20 to 70% OFF",
     task: "shop now"
   },
   {
     id: 4,
-    img: "../../assets/Shorts.jpg",
+    img: shorts,
     name: "Shorts",
     discount: "10 to 20% OFF",
     task: "shop now"
   },
   {
     id: 5,
-    img: "../../assets/jogger.webp",
+    img: jogger,
     name: "Jogger",
     discount: "10 to 20% OFF",
     task: "shop now"
   },
   {
     id: 6,
-    img: "../../assets/Topwear.jpg",
+    img: topwear,
     name: "Topwear",
     discount: "30 to 40% OFF",
     task: "shop now"
   },
   {
     id: 7,
-    img: "../../assets/Kidswear.webp",
+    img: kidswear,
     name: "Kidswear",
     discount: "10 to 20% OFF",
     task: "shop now"
