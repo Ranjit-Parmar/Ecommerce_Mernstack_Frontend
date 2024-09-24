@@ -92,19 +92,19 @@ export const cartSlice = createSlice({
 
 export const fetchItems = async() => {
     const option = {
-        url : 'http://localhost:5000/api/v1/cart/myCart',
+        url : 'https://shopping-app-jh29.onrender.com/api/v1/cart/myCart',
         method : 'GET',
         withCredentials : true
     }
 
    const {data} = await axios(option);
-   return data.cartItem;
+   return data?.cartItem;
    
 }
 
 export const getStripeKey = async () => {
     const option = {
-        url : 'http://localhost:5000/api/v1/payment/get_stripe_api_key',
+        url : 'https://shopping-app-jh29.onrender.com/api/v1/payment/get_stripe_api_key',
         method : 'GET',
         withCredentials : true
     }

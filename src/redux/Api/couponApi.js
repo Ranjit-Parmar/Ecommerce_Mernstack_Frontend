@@ -4,7 +4,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 export const couponApi = createApi({
     reducerPath : 'couponApi',
     baseQuery : fetchBaseQuery({
-        baseUrl : 'http://localhost:5000/api/v1/coupon/',
+        baseUrl : 'https://shopping-app-jh29.onrender.com/api/v1/coupon/',
         credentials : 'include'
     }),
     endpoints : (builder) => ({

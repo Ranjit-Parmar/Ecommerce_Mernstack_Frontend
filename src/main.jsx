@@ -36,6 +36,7 @@ import Add_Edit_Coupon from './components/admin/add_edit_coupon/Add_Edit_Coupon.
 import ForgottenPassword from './pages/forgotPassword/ForgottenPassword.jsx';
 import ResetPassword from './pages/resetPassword/ResetPassword.jsx';
 import { getStripeKey } from './redux/reducers/cartReducer.js';
+import PageNotFound from './pages/pageNotFound/PageNotFound.jsx';
 
 const router = createBrowserRouter([
   {
@@ -198,6 +199,10 @@ const router = createBrowserRouter([
     path: 'payment_fail',
     element:<OrderCancel />
   },
+  {
+    path: '*',
+    element:<PageNotFound/>
+  }
 ])
 
 

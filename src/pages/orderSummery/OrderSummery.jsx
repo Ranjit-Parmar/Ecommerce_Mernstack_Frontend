@@ -24,7 +24,7 @@ const OrderSummery = () => {
         e.preventDefault();
         try {
             const { data } = await axios.post(
-                `http://localhost:5000/api/v1/payment/make_payment`,
+                `https://shopping-app-jh29.onrender.com/api/v1/payment/make_payment`,
                 {
                   amount: 1400,
                 },

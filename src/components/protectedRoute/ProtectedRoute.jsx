@@ -25,7 +25,7 @@ const ProtectedRoute = ({ children }) => {
       dispatch(logInUser(data));
 
       loadCartfunc().catch((e)=>{
-        if(e.response.status === 401){
+        if(e?.response?.status === 401){
            <Navigate to={'/login-signup'} replace={true}/>
           };
         });  
