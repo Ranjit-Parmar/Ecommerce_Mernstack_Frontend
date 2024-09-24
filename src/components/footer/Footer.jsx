@@ -1,4 +1,9 @@
 import React from 'react'
+import logo from '../../assets/logo.png'
+import facebook from '../../assets/facebook.png'
+import twitter from '../../assets/twitter.png'
+import youtube from '../../assets/youtube.png'
+import instagram from '../../assets/instagram.png'
 
 const Footer = () => {
   return (
@@ -14,7 +19,7 @@ const Footer = () => {
           </div>
         </div>
       <div className='grid grid-cols-1 lg:grid-cols-5 lg:text-base text-sm w-[95%] py-4'>
-          <img src="../../src/assets/logo.png" alt="" className='w-10 lg:w-16 pt-2 lg:pt-0 pl-2 lg:pb-0 lg:pl-0'/>
+          <img src={logo} alt="" className='w-10 lg:w-16 pt-2 lg:pt-0 pl-2 lg:pb-0 lg:pl-0'/>
         <div className='h-full pb-2 pl-2 lg:pb-0 lg:pl-0'>
 
           <ul className='flex flex-col gap-2 lg:gap-4 mt-4 text-gray-400 leading-4'>
@@ -45,10 +50,10 @@ const Footer = () => {
         <div className='h-full pb-2 pl-2 lg:pb-0 lg:pl-0 text-gray-400'>
           <h3 className='flex flex-col lg:gap-4 mt-4'>Keep In Touch</h3>
           <ul className='flex gap-2 lg:gap-4 mt-4 text-gray-400 leading-4'>
-            <li><img src="../../src/assets/facebook.png" alt="" className='h-5 lg:h-full'/></li>
-            <li><img src="../../src/assets/twitter.png" alt="" className='h-5 lg:h-full'/></li>
-            <li><img src="../../src/assets/youtube.png" alt="" className='h-5 lg:h-full'/></li>
-            <li><img src="../../src/assets/instagram.png" alt="" className='h-5 lg:h-full'/></li>
+            <li><img src={facebook}alt="" className='h-5 lg:h-full'/></li>
+            <li><img src={twitter} alt="" className='h-5 lg:h-full'/></li>
+            <li><img src={youtube} alt="" className='h-5 lg:h-full'/></li>
+            <li><img src={instagram} alt="" className='h-5 lg:h-full'/></li>
           </ul>
         </div>        
       </div>
