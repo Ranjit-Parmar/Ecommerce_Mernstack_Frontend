@@ -37,6 +37,7 @@ const LoginSignup = () => {
       Navigate('/', {replace:true})
     }  
    
+    
     dispatch(resetCart());
     localStorage.clear()
   },[accountState, logInUser, registerUser])
@@ -61,12 +62,12 @@ const submitHandler = async (e) => {
 
         if(res.data && res?.data?.success){
           const cartData = await fetchItems();
-          dispatch(logInUser(res.data.userData));
+          dispatch(logInUser(res?.data?.userData));
           Navigate('/')
           dispatch(fetchCartItems(cartData))
         }else{
-          const {data} = res.error
-          toast.error(data.message); 
+          const {data} = res?.error
+          toast.error(data?.message); 
         }
            
     }
@@ -78,12 +79,12 @@ const submitHandler = async (e) => {
             
             if (res.data) {
               const cartData = await fetchItems();
-              dispatch(logInUser(res.data.userData));
+              dispatch(logInUser(res?.data?.userData));
               Navigate('/')
               dispatch(fetchCartItems(cartData))
             }else{
-              const {data} = res.error
-              toast.error(data.message);  
+              const {data} = res?.error
+              toast.error(data?.message);  
             }
           
   }

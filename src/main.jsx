@@ -40,7 +40,7 @@ import PageNotFound from './pages/pageNotFound/PageNotFound.jsx';
 
 const router = createBrowserRouter([
   {
-    path: "login-signup",
+    path: "/login-signup",
     element: (
       <>
         <Toaster />
