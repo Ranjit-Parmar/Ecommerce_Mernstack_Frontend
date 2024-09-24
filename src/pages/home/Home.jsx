@@ -15,49 +15,49 @@ import { Helmet } from 'react-helmet-async'
 const dummyData = [
   {
     id: 1,
-    img: "../../src/assets/Tshirt.jpg",
+    img: "../../assets/Tshirt.jpg",
     name: "T-Shirts",
     discount: "40 to 80% OFF",
     task: "shop now"
   },
   {
     id: 2,
-    img: "../../src/assets/Shirt.jpg",
+    img: "../../assets/Shirt.jpg",
     name: "Shirt",
     discount: "50 to 90% OFF",
     task: "shop now"
   },
   {
     id: 3,
-    img: "../../src/assets/Jeans.jpg",
+    img: "../../assets/Jeans.jpg",
     name: "Jeans",
     discount: "20 to 70% OFF",
     task: "shop now"
   },
   {
     id: 4,
-    img: "../../src/assets/Shorts.jpg",
+    img: "../../assets/Shorts.jpg",
     name: "Shorts",
     discount: "10 to 20% OFF",
     task: "shop now"
   },
   {
     id: 5,
-    img: "../../src/assets/jogger.webp",
+    img: "../../assets/jogger.webp",
     name: "Jogger",
     discount: "10 to 20% OFF",
     task: "shop now"
   },
   {
     id: 6,
-    img: "../../src/assets/Topwear.jpg",
+    img: "../../assets/Topwear.jpg",
     name: "Topwear",
     discount: "30 to 40% OFF",
     task: "shop now"
   },
   {
     id: 7,
-    img: "../../src/assets/Kidswear.webp",
+    img: "../../assets/Kidswear.webp",
     name: "Kidswear",
     discount: "10 to 20% OFF",
     task: "shop now"
