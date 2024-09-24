@@ -32,10 +32,10 @@ const LoginSignup = () => {
   
   useEffect(()=>{   
 
-    // let getCookieValue = cookies.get('token');
-    // if(getCookieValue){
-    //   Navigate('/', {replace:true})
-    // }  
+    let getCookieValue = cookies.get('token');
+    if(getCookieValue){
+      Navigate('/', {replace:true})
+    }  
    
     dispatch(resetCart());
     localStorage.clear()
