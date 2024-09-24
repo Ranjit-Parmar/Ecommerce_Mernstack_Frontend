@@ -92,7 +92,7 @@ export const cartSlice = createSlice({
 
 export const fetchItems = async() => {
     const option = {
-        url : 'https://shopping-app-jh29.onrender.com/api/v1/cart/myCart',
+        url : 'https://shopping-app-2ow9.onrender.com/api/v1/cart/myCart',
         method : 'GET',
         withCredentials : true
     }
@@ -104,7 +104,7 @@ export const fetchItems = async() => {
 
 export const getStripeKey = async () => {
     const option = {
-        url : 'https://shopping-app-jh29.onrender.com/api/v1/payment/get_stripe_api_key',
+        url : 'https://shopping-app-2ow9.onrender.com/api/v1/payment/get_stripe_api_key',
         method : 'GET',
         withCredentials : true
     }

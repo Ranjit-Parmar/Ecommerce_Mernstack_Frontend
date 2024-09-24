@@ -40,7 +40,7 @@ export const userSlice = createSlice({
 
 export const loadUser = async() => {
     const option = {
-        url : 'https://shopping-app-jh29.onrender.com/api/v1/user/active-user',
+        url : 'https://shopping-app-2ow9.onrender.com/api/v1/user/active-user',
         method : 'GET',
         withCredentials : true
     }

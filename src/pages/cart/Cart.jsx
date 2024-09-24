@@ -49,7 +49,7 @@ const Cart = () => {
 
     e.preventDefault();
 
-    axios.get(`https://shopping-app-jh29.onrender.com/api/v1/coupon/getCoupons?code=${coupon}`).then((res)=>{
+    axios.get(`https://shopping-app-2ow9.onrender.com/api/v1/coupon/getCoupons?code=${coupon}`).then((res)=>{
       const couponRes = res.data;
       
        if(couponRes?.getAllCoupons?.code === coupon.toUpperCase()){
@@ -93,7 +93,7 @@ const Cart = () => {
   
   const removeHandler = async(cartItem) => {
     const option = {
-      url :   `https://shopping-app-jh29.onrender.com/api/v1/cart/deleteCartItem/${cartItem._id}`,
+      url :   `https://shopping-app-2ow9.onrender.com/api/v1/cart/deleteCartItem/${cartItem._id}`,
       method : 'DELETE',
       withCredentials : true,
       headers : {

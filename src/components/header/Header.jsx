@@ -58,12 +58,9 @@ const Header = () => {
     const logOutHandler = async() => {
 
         const option = {
-            url : 'http://localhost:5000/api/v1/user/logout',
+            url : 'https://shopping-app-2ow9.onrender.com/api/v1/user/logout',
             method : 'GET',
             withCredentials : true,
-            headers : {
-                'Content-Type':'application/json'
-            }
         }
 
         const {data} = await axios(option);
