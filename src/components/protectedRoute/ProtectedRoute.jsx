@@ -1,6 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import { fetchCartItems, fetchItems } from '../../redux/reducers/cartReducer';
 import store from '../../store/Store.js';
+import { useSelector } from 'react-redux';
 
 
 export const loadCartfunc = async () => {
