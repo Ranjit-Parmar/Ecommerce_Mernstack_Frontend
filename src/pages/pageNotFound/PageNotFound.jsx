@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaExclamation } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const PageNotFound = () => {
   return (
