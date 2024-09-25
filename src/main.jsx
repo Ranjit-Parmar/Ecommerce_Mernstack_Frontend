@@ -222,7 +222,7 @@ const router = createBrowserRouter([
     errorElement: <h2>Page not found</h2>,
     children: [
       {
-        path: "/login",
+        path: "/",
         element: (
           <>
             <LoginSignup />
@@ -230,7 +230,7 @@ const router = createBrowserRouter([
         )
       },
       {
-        index: true,
+        path: "/home",
         element: <ProtectedRoute>
           <Home />
         </ProtectedRoute>
