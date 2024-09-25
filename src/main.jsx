@@ -38,76 +38,250 @@ import ResetPassword from './pages/resetPassword/ResetPassword.jsx';
 import { getStripeKey } from './redux/reducers/cartReducer.js';
 import PageNotFound from './pages/pageNotFound/PageNotFound.jsx';
 
+// const router = createBrowserRouter([
+//   {
+//     path: "/login-signup",
+//     element: (
+//       <>
+//         <Toaster />
+//         <LoginSignup  />
+//       </>
+//     )
+//   },
+//   {
+//     path: "/",
+//     loader: async () => {
+//       try{        
+//       return  await loadUser()
+//       }catch(err){ 
+//         return err;
+//       }
+//     },
+//     element: <>
+//       <Toaster />
+//       <ProtectedRoute>
+//       <App />
+//       </ProtectedRoute>
+//     </>,
+//     errorElement: <h2>Page not found</h2>,
+//     children: [
+//       {
+//         index: true,
+//         element: <Home />
+//       },
+//       {
+//         path: "/shopcategory/:gender",
+//         element: <ShopCategory />
+//       },
+//       {
+//         path: "/productlist",
+//         element: <ProductList title="MENS CLOTHING" />
+//       },
+//       {
+//         path: "/productdetail/:id",
+//         element: <Product />
+//       },
+//       {
+//         path: "/cart",
+//         element: <Cart />
+//       },
+//       {
+//         path: "checkout/address",
+//         element: <Address />
+//       },
+//       {
+//         path: "checkout/address/order-summery",
+//         element: <OrderSummery />
+//       },
+//       {
+//         path: "/edit-profile",
+//         element: <EditProfile />
+//       },
+//       {
+//         path: "/my-order",
+//         element:<MyOrder />
+//       },
+
+//     ]
+//   },
+//   {
+//     path: "/admin",
+//     loader: async () => {
+//       try{
+//       return  await loadUser()
+//       }catch(err){
+//         return err;
+//       }
+//     },
+//     element: <>
+//     <Toaster/>
+//     <ProtectedAdminRoute>
+//       <Admin />
+//     </ProtectedAdminRoute>
+//     </>,
+//     children: [
+//       {
+//         path: "",
+//         element: <Products/>
+//       },
+//       {
+//         path: "product-details/:id",
+//         element: <ProductDetails />
+//       },
+//       {
+//         path: "add-products",
+//         element: <AddProduct />
+//       },
+//       {
+//         path: "create-coupon",
+//         element: <Add_Edit_Coupon/>
+//       },
+//       {
+//         path: "update-product/:id",
+//         element: <UpdateProduct />
+//       },
+//       {
+//         path: "update-coupon/:id",
+//         element: <Add_Edit_Coupon/>
+//       },
+//       {
+//         path: "edit-profile",
+//         element: <EditProfile />
+//       },
+//       {
+//         path: "edit-admin-profile/:id",
+//         element: <EditAdminProfile/>
+//       },
+//       {
+//         path: "orders",
+//         element: <Orders />
+//       },
+//       {
+//         path: "coupons",
+//         element: <Coupon />
+//       },
+//       {
+//         path: "users",
+//         element: <Users />
+//       },
+//     ]
+//   },
+//   {
+//     path: 'forgotPassword',
+//     element: <>
+//     <Toaster/>
+//     <ForgottenPassword />
+//     </>
+//   },
+//   {
+//     path: 'forgotPassword/reset/:id',
+//     element: <>
+//     <Toaster/>
+//     <ResetPassword />
+//     </>
+//   },
+//   {
+//     path: 'payment',
+//     loader: async () => {
+//       try{
+//       return  await getStripeKey()
+//       }catch(err){
+//         return err;
+//       }
+//     },
+//     element: <Payment />
+//   },
+//   {
+//     path: 'payment_success',
+//     element:<OrderSuccess />
+//   },
+//   {
+//     path: 'payment_fail',
+//     element:<OrderCancel />
+//   },
+//   {
+//     path: '*',
+//     element:<PageNotFound/>
+//   }
+// ])
 const router = createBrowserRouter([
-  // {
-  //   path: "/login-signup",
-  //   element: (
-  //     <>
-  //       <Toaster />
-  //       <LoginSignup  />
-  //     </>
-  //   )
-  // },
   {
     path: "/",
     loader: async () => {
-      try{        
-      return  await loadUser()
-      }catch(err){ 
+      try {
+        return await loadUser()
+      } catch (err) {
         return err;
       }
     },
-    element: <>
-      <Toaster />
-      <ProtectedRoute>
-      <App />
-      </ProtectedRoute>
-    </>,
+    element: <><Toaster />
+    <ProtectedRoute>
+          <App />
+        </ProtectedRoute>
+             </>,
     errorElement: <h2>Page not found</h2>,
     children: [
       {
-          path: "/login-signup",
-          element: (
-            <>
-              <LoginSignup  />
-            </>
-          )
-        },
+        path: "/login-signup",
+        element: (
+          <>
+            <LoginSignup />
+          </>
+        )
+      },
       {
         index: true,
-        element: <Home />
+        element: <ProtectedRoute>
+          <Home />
+        </ProtectedRoute>
       },
       {
         path: "/shopcategory/:gender",
-        element: <ShopCategory />
+        element: <ProtectedRoute>
+        <ShopCategory />
+        </ProtectedRoute>
       },
       {
         path: "/productlist",
-        element: <ProductList title="MENS CLOTHING" />
+        element: <ProtectedRoute>
+        <ProductList />
+        </ProtectedRoute>
       },
       {
         path: "/productdetail/:id",
-        element: <Product />
+        element: <ProtectedRoute>
+        <Product />
+        </ProtectedRoute>
       },
       {
         path: "/cart",
-        element: <Cart />
+        element: <ProtectedRoute>
+           <Cart />
+        </ProtectedRoute>
       },
       {
         path: "checkout/address",
-        element: <Address />
+        element: <ProtectedRoute>
+        <Address />
+        </ProtectedRoute>
       },
       {
         path: "checkout/address/order-summery",
-        element: <OrderSummery />
+        element: <ProtectedRoute>
+        <OrderSummery />
+        </ProtectedRoute>
       },
       {
         path: "/edit-profile",
-        element: <EditProfile />
+        element: <ProtectedRoute>
+        <EditProfile />
+        </ProtectedRoute>
       },
       {
         path: "/my-order",
-        element:<MyOrder />
+        element: <ProtectedRoute>
+        <MyOrder />
+        </ProtectedRoute>
       },
 
     ]
@@ -115,101 +289,135 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     loader: async () => {
-      try{
-      return  await loadUser()
-      }catch(err){
+      try {
+        return await loadUser()
+      } catch (err) {
         return err;
       }
     },
     element: <>
-    <Toaster/>
-    <ProtectedAdminRoute>
-      <Admin />
-    </ProtectedAdminRoute>
+      <Toaster />
+      <ProtectedAdminRoute>
+        <Admin />
+      </ProtectedAdminRoute>
     </>,
     children: [
       {
         path: "",
-        element: <Products/>
+        element:  <ProtectedAdminRoute>
+        <Products />
+      </ProtectedAdminRoute>
       },
       {
         path: "product-details/:id",
-        element: <ProductDetails />
+        element:  <ProtectedAdminRoute>
+        <ProductDetails />
+      </ProtectedAdminRoute>
       },
       {
         path: "add-products",
-        element: <AddProduct />
+        element:  <ProtectedAdminRoute>
+        <AddProduct />
+      </ProtectedAdminRoute>
       },
       {
         path: "create-coupon",
-        element: <Add_Edit_Coupon/>
+        element:  <ProtectedAdminRoute>
+        <Add_Edit_Coupon />
+      </ProtectedAdminRoute>
       },
       {
         path: "update-product/:id",
-        element: <UpdateProduct />
+        element:  <ProtectedAdminRoute>
+        <UpdateProduct />
+      </ProtectedAdminRoute>
       },
       {
         path: "update-coupon/:id",
-        element: <Add_Edit_Coupon/>
+        element:  <ProtectedAdminRoute>
+        <Add_Edit_Coupon />
+      </ProtectedAdminRoute>
       },
       {
         path: "edit-profile",
-        element: <EditProfile />
+        element:  <ProtectedAdminRoute>
+        <EditProfile />
+      </ProtectedAdminRoute>
       },
       {
         path: "edit-admin-profile/:id",
-        element: <EditAdminProfile/>
+        element:  <ProtectedAdminRoute>
+        <EditAdminProfile />
+      </ProtectedAdminRoute>
       },
       {
         path: "orders",
-        element: <Orders />
+        element:  <ProtectedAdminRoute>
+        <Orders />
+      </ProtectedAdminRoute>
       },
       {
         path: "coupons",
-        element: <Coupon />
+        element:  <ProtectedAdminRoute>
+        <Coupon />
+      </ProtectedAdminRoute>
       },
       {
         path: "users",
-        element: <Users />
+        element:  <ProtectedAdminRoute>
+        <Users />
+      </ProtectedAdminRoute>
       },
     ]
   },
   {
     path: 'forgotPassword',
     element: <>
-    <Toaster/>
-    <ForgottenPassword />
+      <Toaster />
+      <ProtectedRoute>
+      <ForgottenPassword />
+        </ProtectedRoute>
     </>
   },
   {
     path: 'forgotPassword/reset/:id',
     element: <>
-    <Toaster/>
-    <ResetPassword />
+      <Toaster />
+      <ProtectedRoute>
+      <ResetPassword />
+        </ProtectedRoute>
     </>
   },
   {
     path: 'payment',
     loader: async () => {
-      try{
-      return  await getStripeKey()
-      }catch(err){
+      try {
+        return await getStripeKey()
+      } catch (err) {
         return err;
       }
     },
-    element: <Payment />
+    element: <ProtectedRoute>
+    <Payment />
+      </ProtectedRoute>
   },
   {
     path: 'payment_success',
-    element:<OrderSuccess />
+    element: <ProtectedRoute>
+    <OrderSuccess />
+      </ProtectedRoute>
   },
   {
     path: 'payment_fail',
-    element:<OrderCancel />
+    element: <ProtectedRoute>
+    <OrderCancel />
+      </ProtectedRoute>
   },
   {
     path: '*',
-    element:<PageNotFound/>
+    element: <ProtectedRoute>
+    <PageNotFound />
+      </ProtectedRoute>
   }
 ])
 
