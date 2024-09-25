@@ -222,7 +222,7 @@ const router = createBrowserRouter([
     errorElement: <h2>Page not found</h2>,
     children: [
       {
-        path: "/login-signup",
+        path: "/login",
         element: (
           <>
             <LoginSignup />
