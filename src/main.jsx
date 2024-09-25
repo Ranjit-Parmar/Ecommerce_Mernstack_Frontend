@@ -39,15 +39,15 @@ import { getStripeKey } from './redux/reducers/cartReducer.js';
 import PageNotFound from './pages/pageNotFound/PageNotFound.jsx';
 
 const router = createBrowserRouter([
-  {
-    path: "/login-signup",
-    element: (
-      <>
-        <Toaster />
-        <LoginSignup  />
-      </>
-    )
-  },
+  // {
+  //   path: "/login-signup",
+  //   element: (
+  //     <>
+  //       <Toaster />
+  //       <LoginSignup  />
+  //     </>
+  //   )
+  // },
   {
     path: "/",
     loader: async () => {
@@ -65,6 +65,14 @@ const router = createBrowserRouter([
     </>,
     errorElement: <h2>Page not found</h2>,
     children: [
+      {
+          path: "/login-signup",
+          element: (
+            <>
+              <LoginSignup  />
+            </>
+          )
+        },
       {
         index: true,
         element: <Home />
