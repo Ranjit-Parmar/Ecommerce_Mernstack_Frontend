@@ -207,22 +207,15 @@ import PageNotFound from './pages/pageNotFound/PageNotFound.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    loader: async () => {
-      try {
-        return await loadUser()
-      } catch (err) {
-        return err;
-      }
-    },
     element: <><Toaster />
-    <ProtectedRoute>
-          <App />
+      <ProtectedRoute>
+          <App /> 
         </ProtectedRoute>
-             </>,
+           </>,
     errorElement: <h2>Page not found</h2>,
     children: [
       {
-        path: "/",
+        index : true,
         element: (
           <>
             <LoginSignup />
