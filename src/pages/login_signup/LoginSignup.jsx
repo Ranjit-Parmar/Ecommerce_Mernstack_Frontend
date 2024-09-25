@@ -105,7 +105,7 @@ const submitHandler = async (e) => {
       <div className='w-full lg:h-3/4 lg:mt-0 ;g:py-10 lg:py-[100px] mt-24'>
         <form method='POST' encType="multipart/form-data" className=' ' onSubmit={submitHandler}>
 
-          <div className=" border-2 border-black lg:w-1/2 w-[95%] lg:h-[650px] bg-white m-auto py-5 lg:py-10 px-12 lg:px-[60px] shadow-lg">
+          <div className=" lg:w-1/2 w-[95%] lg:h-[650px] bg-white m-auto py-5 lg:py-10 px-12 lg:px-[60px] shadow-lg">
             <h1 className='my-5 mx-0 text-lg lg:text-xl font-medium'>{accountState}</h1>
             <div className="flex flex-col gap-3 lg:gap-[20px] mt-[30px]">
               {accountState == "signup" ? <input type="text" placeholder='Enter Your Name' className='h-11 lg:h-[72px] w-full pl-5 border-[1px] border-gray-400 outline-none lg:text-lg' ref={nameRef} onChange={(e) => setName(e.target.value)} /> : ""}
