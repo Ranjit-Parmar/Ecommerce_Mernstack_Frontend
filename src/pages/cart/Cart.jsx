@@ -8,7 +8,6 @@ import { calculatePrice } from '../../redux/reducers/cartReducer'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { useUpdateCartItemsMutation } from '../../redux/Api/cartApi.js'
-import { loadCartfunc } from '../../components/protectedRoute/ProtectedRoute.jsx'
 import toast from 'react-hot-toast'
 import { ShopContext } from '../../context/ShopContext.jsx'
 import { Helmet } from 'react-helmet-async'
