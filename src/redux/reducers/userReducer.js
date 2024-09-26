@@ -46,7 +46,7 @@ export const loadUser = async() => {
     }
 
    const {data} = await axios(option);
-   return data?.activeUser;
+   return data?.activeUser || null;
 }
 
 export const { logInUser, logOutUser } = userSlice.actions;

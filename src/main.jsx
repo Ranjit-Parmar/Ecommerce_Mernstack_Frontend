@@ -35,7 +35,7 @@ import EditAdminProfile from './components/admin/edit_profile/EditAdminProfile.j
 import Add_Edit_Coupon from './components/admin/add_edit_coupon/Add_Edit_Coupon.jsx';
 import ForgottenPassword from './pages/forgotPassword/ForgottenPassword.jsx';
 import ResetPassword from './pages/resetPassword/ResetPassword.jsx';
-import { getStripeKey } from './redux/reducers/cartReducer.js';
+import { fetchItems, getStripeKey } from './redux/reducers/cartReducer.js';
 import PageNotFound from './pages/pageNotFound/PageNotFound.jsx';
 
 // const router = createBrowserRouter([
@@ -207,77 +207,95 @@ import PageNotFound from './pages/pageNotFound/PageNotFound.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <><Toaster />
-      <ProtectedRoute>
-          <App /> 
+     loader: async () => {
+      try{
+      let userData = await loadUser()
+      if(userData){
+        let cartData = await fetchItems()
+        return [userData, cartData]
+      }
+      }catch(err){
+        return err;
+      }
+    },
+    element: <>
+        <Toaster />
+        <ProtectedRoute>
+            <App /> 
         </ProtectedRoute>
            </>,
-    errorElement: <h2>Page not found</h2>,
+    errorElement: <PageNotFound />,
     children: [
       {
-        index : true,
-        element: (
-          <>
-            <LoginSignup />
-          </>
-        )
-      },
-      {
-        path: "/home",
-        element: <ProtectedRoute>
-          <Home />
-        </ProtectedRoute>
+        path: " ",
+        element: <Home />
+                
       },
       {
         path: "/shopcategory/:gender",
-        element: <ProtectedRoute>
-        <ShopCategory />
-        </ProtectedRoute>
+        element: <ShopCategory />
       },
       {
         path: "/productlist",
-        element: <ProtectedRoute>
-        <ProductList />
-        </ProtectedRoute>
+        element: <ProductList />
       },
       {
         path: "/productdetail/:id",
-        element: <ProtectedRoute>
-        <Product />
-        </ProtectedRoute>
+        element: <Product />
       },
       {
         path: "/cart",
-        element: <ProtectedRoute>
-           <Cart />
-        </ProtectedRoute>
+        element: <Cart />
       },
       {
         path: "checkout/address",
-        element: <ProtectedRoute>
-        <Address />
-        </ProtectedRoute>
+        element: <Address />
       },
       {
         path: "checkout/address/order-summery",
-        element: <ProtectedRoute>
-        <OrderSummery />
-        </ProtectedRoute>
+        element: <OrderSummery />
       },
       {
         path: "/edit-profile",
-        element: <ProtectedRoute>
-        <EditProfile />
-        </ProtectedRoute>
+        element: <EditProfile />
       },
       {
         path: "/my-order",
-        element: <ProtectedRoute>
-        <MyOrder />
-        </ProtectedRoute>
+        element: <MyOrder />
       },
+      {
+        path: '/payment',
+        loader: async () => {
+          try {
+            return await getStripeKey()
+          } catch (err) {
+            return err;
+          }
+        },
+        element: <Payment />
+      },
+      {
+        path: '/payment_success',
+        element: <OrderSuccess />
+      },
+      {
+        path: '/payment_fail',
+        element: <OrderCancel />
+      },
+      {
+        path: '*',
+        element: <PageNotFound />
+      }
 
     ]
+  },
+  {
+    path : "/login",
+    element: (
+      <>
+        <LoginSignup />
+      </>
+    )
   },
   {
     path: "/admin",
@@ -296,70 +314,48 @@ const router = createBrowserRouter([
     </>,
     children: [
       {
-        path: "",
-        element:  <ProtectedAdminRoute>
-        <Products />
-      </ProtectedAdminRoute>
+        path: " ",
+        element: <Products />
       },
       {
         path: "product-details/:id",
-        element:  <ProtectedAdminRoute>
-        <ProductDetails />
-      </ProtectedAdminRoute>
+        element: <ProductDetails />
       },
       {
         path: "add-products",
-        element:  <ProtectedAdminRoute>
-        <AddProduct />
-      </ProtectedAdminRoute>
+        element: <AddProduct />
       },
       {
         path: "create-coupon",
-        element:  <ProtectedAdminRoute>
-        <Add_Edit_Coupon />
-      </ProtectedAdminRoute>
+        element: <Add_Edit_Coupon />
       },
       {
         path: "update-product/:id",
-        element:  <ProtectedAdminRoute>
-        <UpdateProduct />
-      </ProtectedAdminRoute>
+        element: <UpdateProduct />
       },
       {
         path: "update-coupon/:id",
-        element:  <ProtectedAdminRoute>
-        <Add_Edit_Coupon />
-      </ProtectedAdminRoute>
+        element: <Add_Edit_Coupon />
       },
       {
         path: "edit-profile",
-        element:  <ProtectedAdminRoute>
-        <EditProfile />
-      </ProtectedAdminRoute>
+        element: <EditProfile />
       },
       {
         path: "edit-admin-profile/:id",
-        element:  <ProtectedAdminRoute>
-        <EditAdminProfile />
-      </ProtectedAdminRoute>
+        element: <EditAdminProfile />
       },
       {
         path: "orders",
-        element:  <ProtectedAdminRoute>
-        <Orders />
-      </ProtectedAdminRoute>
+        element: <Orders />
       },
       {
         path: "coupons",
-        element:  <ProtectedAdminRoute>
-        <Coupon />
-      </ProtectedAdminRoute>
+        element: <Coupon />
       },
       {
         path: "users",
-        element:  <ProtectedAdminRoute>
-        <Users />
-      </ProtectedAdminRoute>
+        element: <Users />
       },
     ]
   },
@@ -367,51 +363,17 @@ const router = createBrowserRouter([
     path: 'forgotPassword',
     element: <>
       <Toaster />
-      <ProtectedRoute>
       <ForgottenPassword />
-        </ProtectedRoute>
     </>
   },
   {
     path: 'forgotPassword/reset/:id',
     element: <>
       <Toaster />
-      <ProtectedRoute>
       <ResetPassword />
-        </ProtectedRoute>
     </>
   },
-  {
-    path: 'payment',
-    loader: async () => {
-      try {
-        return await getStripeKey()
-      } catch (err) {
-        return err;
-      }
-    },
-    element: <ProtectedRoute>
-    <Payment />
-      </ProtectedRoute>
-  },
-  {
-    path: 'payment_success',
-    element: <ProtectedRoute>
-    <OrderSuccess />
-      </ProtectedRoute>
-  },
-  {
-    path: 'payment_fail',
-    element: <ProtectedRoute>
-    <OrderCancel />
-      </ProtectedRoute>
-  },
-  {
-    path: '*',
-    element: <ProtectedRoute>
-    <PageNotFound />
-      </ProtectedRoute>
-  }
+  
 ])
 
 

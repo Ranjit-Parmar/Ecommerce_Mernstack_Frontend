@@ -1,24 +1,38 @@
-import { Navigate } from 'react-router-dom';
-import { fetchCartItems, fetchItems } from '../../redux/reducers/cartReducer';
-import store from '../../store/Store.js';
+import { Navigate, useLoaderData } from 'react-router-dom';
+import { fetchCartItems } from '../../redux/reducers/cartReducer';
 import { useSelector } from 'react-redux';
+import { logOutUser } from '../../redux/reducers/userReducer';
+import { useEffect } from 'react';
 
 
-export const loadCartfunc = async () => {
-  const cartData = await fetchItems();
-  store.dispatch(fetchCartItems(cartData))
- } 
 
 const ProtectedRoute = ({ children }) => { 
 
-  const {user} = useSelector((state)=>state.userReducer);
+  const {user, isLoggedInUser} = useSelector((state)=>state.userReducer);
+  const dispatch = useDispatch();
+  const data = useLoaderData();
+  
+  useEffect(()=>{
+    
+    if(data.status === 401){
+      <Navigate to="/login-signup" replace={true}/>
+      dispatch(logOutUser());
+      toast.error("please login again")
+    }else{
+      dispatch(logInUser(data[0]))
+      dispatch(fetchCartItems(data[1]))
+    }
 
-  if (!user) {
-    return <Navigate to="/login" replace={true}></Navigate>;
+  },[user,dispatch,data])
+
+  if(isLoggedInUser){
+    return children;
+
+  }else{
+    return <Navigate to={'/login-signup'} replace={true}/>
   }
-  return children;
-  
-  
+    
+
 }
 
 export default ProtectedRoute;

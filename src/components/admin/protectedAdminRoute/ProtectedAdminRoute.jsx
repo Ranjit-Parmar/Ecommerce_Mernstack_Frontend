@@ -1,6 +1,6 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useLoaderData } from "react-router-dom"
-import { logInUser } from "../../../redux/reducers/userReducer";
+import { logInUser, logOutUser } from "../../../redux/reducers/userReducer";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
@@ -8,27 +8,29 @@ import toast from "react-hot-toast";
   
 const ProtectedAdminRoute = ({children}) => {
 
+    const {user, isLoggedInUser} = useSelector((state)=>state.userReducer);
     const dispatch = useDispatch();
     const data = useLoaderData();
     
     useEffect(()=>{
+    
+        if(data.status === 401){
 
-        if(data){
-            dispatch(logInUser(data));
+          <Navigate to="/login-signup" replace={true}/>
+
+          dispatch(logOutUser());
+
         }else{
-            toast.error('Token Has Expired! Please Login Again.');
-            <Navigate to={'/login-signup'} replace={true}/>
-            dispatch(logInUser(null))
+          dispatch(logInUser(data))
         }
-
-    },[data,dispatch,children])
     
+      },[user,dispatch,data])
     
-    if(data?.response?.status === 500 || data?.response?.status === 401){
+    if(!isLoggedInUser){
         
         return <Navigate to={'/login-signup'} replace={true}/>
     }
-    if(data?.role === 'user'){
+    if(isLoggedInUser && user?.role === 'user'){
         return <Navigate to={'/'} replace={true}/>
     }
     return children;

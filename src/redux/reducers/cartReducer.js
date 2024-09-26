@@ -32,7 +32,7 @@ export const cartSlice = createSlice({
 
         fetchCartItems: (state, action) => {
 
-            if(action.payload.length){
+            if(action?.payload?.length){
 
                 state.isLoading = true,
                 state.cartItems = action.payload;
