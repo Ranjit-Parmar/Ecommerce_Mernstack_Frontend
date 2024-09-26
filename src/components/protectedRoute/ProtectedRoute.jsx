@@ -1,16 +1,19 @@
 import { Navigate, useLoaderData } from 'react-router-dom';
-import { fetchCartItems } from '../../redux/reducers/cartReducer';
+import { fetchCartItems, fetchItems } from '../../redux/reducers/cartReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { logInUser, logOutUser } from '../../redux/reducers/userReducer';
 import { useEffect } from 'react';
 import { useMyCartItemsQuery } from '../../redux/Api/cartApi';
 
 
+export const fetchCartData = async () => {
+   const cartItemsData = await fetchItems()
+   return  cartItemsData
+}
 
 const ProtectedRoute = ({ children }) => { 
 
   const {user, isLoggedInUser} = useSelector((state)=>state.userReducer);
-  const {data, isLoading, isError} = useMyCartItemsQuery();
   const dispatch = useDispatch();
   const userdata = useLoaderData();
 
@@ -18,18 +21,25 @@ const ProtectedRoute = ({ children }) => {
   
   useEffect(()=>{
     
-    if(userdata.status === 401){
-        dispatch(logOutUser());
-        toast.error("please login again")
-        return <Navigate to="/login" replace={true}/>
-    }
-      dispatch(logInUser(userdata))
-      dispatch(fetchCartItems(data))
+    // if(userdata.status === 401){
+    //     dispatch(logOutUser());
+    //     toast.error("please login again")
+    //     return <Navigate to="/login" replace={true}/>
+    // }
+    //   dispatch(logInUser(userdata))
+    //   dispatch(fetchCartItems(data))
     
 
-  },[])
+    if(userdata){
+        fetchCartData().then((data)=>{
+            dispatch(fetchCartItems(data))
+        }).catch((err)=>{console.log(err);
+        })
+        dispatch(logInUser(userdata))
+    }
+  },[userdata,dispatch])
 
-  if(!isLoading && data){
+  if(userdata){
     return children;
 
   }else{
