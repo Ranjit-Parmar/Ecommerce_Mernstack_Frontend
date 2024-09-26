@@ -11,9 +11,6 @@ export const cartApi = createApi({
             query : () => ({
                 url : 'myCart',
                 method : 'GET',
-                headers : {
-                    "content-type" : 'application/json'
-                },
             }),
             providesTags: ["carts"]
         }),

@@ -24,13 +24,13 @@ const ProtectedAdminRoute = ({children}) => {
           dispatch(logInUser(data))
         }
     
-      },[user,dispatch,data])
+      },[])
     
     if(!isLoggedInUser){
         
         return <Navigate to={'/login-signup'} replace={true}/>
     }
-    if(isLoggedInUser && user?.role === 'user'){
+    if(user && user?.role === 'user'){
         return <Navigate to={'/'} replace={true}/>
     }
     return children;
