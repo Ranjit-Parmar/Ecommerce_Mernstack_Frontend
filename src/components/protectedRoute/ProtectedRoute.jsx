@@ -24,9 +24,9 @@ const ProtectedRoute = ({ children }) => {
       dispatch(fetchCartItems(data[1]))
     }
 
-  },[user,dispatch,data])
+  },[data])
 
-  if(data){
+  if(user){
     return children;
 
   }else{
