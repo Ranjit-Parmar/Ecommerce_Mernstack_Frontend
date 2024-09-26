@@ -1,6 +1,6 @@
 import { Navigate, useLoaderData } from 'react-router-dom';
 import { fetchCartItems } from '../../redux/reducers/cartReducer';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser } from '../../redux/reducers/userReducer';
 import { useEffect } from 'react';
 
