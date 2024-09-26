@@ -98,7 +98,7 @@ export const fetchItems = async() => {
     }
 
    const {data} = await axios(option);
-   return data?.cartItem;
+   return data?.cartItem || [];
    
 }
 
