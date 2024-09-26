@@ -227,7 +227,7 @@ const router = createBrowserRouter([
     errorElement: <PageNotFound />,
     children: [
       {
-        path: " ",
+        path: "",
         element: <Home />
                 
       },
@@ -314,7 +314,7 @@ const router = createBrowserRouter([
     </>,
     children: [
       {
-        path: " ",
+        path: "",
         element: <Products />
       },
       {

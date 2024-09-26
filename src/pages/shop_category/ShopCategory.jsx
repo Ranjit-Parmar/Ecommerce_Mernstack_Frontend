@@ -7,58 +7,76 @@ import { Helmet } from 'react-helmet-async'
 import Women_model from '../../assets/model1.jpg';
 import men_model from '../../assets/Men-Model.jpg';
 import kid_model from '../../assets/Kid-model.jpg';
+import men_tshirt from '../../assets/clothing3.jpg';
+import women_tshirt from '../../assets/exclusive_image.png';
+import kid_tshirt from '../../assets/clothing8.jpg';
+import men_shirt from '../../assets/clothing5.jpg';
+import women_shirt from '../../assets/women-shirts.jpg';
+import kid_shirt from '../../assets/kids-shirts.jpg';
+import men_jeans from '../../assets/clothing4.jpg';
+import women_jeans from '../../assets/women-jeans.jpg';
+import kid_jeans from '../../assets/Kids-Jeans.jpg';
+import men_shorts from '../../assets/shorts.jpg';
+import women_shorts from '../../assets/women-shorts.jpg';
+import kid_shorts from '../../assets/kids-shorts.jpg';
+import men_winter_wear from '../../assets/men-winter-wear.jpg';
+import women_winter_wear from '../../assets/women-winter-wear.jpg';
+import kid_winter_wear from '../../assets/kids-winter-wear.jpg';
+import men_sports_wear from '../../assets/Men-Sports-Wear.jpg';
+import women_sports_wear from '../../assets/Women-Sports-Wear.jpg';
+import kid_sports_wear from '../../assets/kids-sports-wear.jpg';
 
 const dummyData = [
   {
     id : 1,
-    img1 : "../../src/assets/clothing3.jpg",
-    img2 : "../../src/assets/exclusive_image.png",
-    img3 : "../../src/assets/clothing8.jpg",
+    img1 : men_tshirt,
+    img2 : women_tshirt,
+    img3 : kid_tshirt,
     name : "T-Shirts",
     discount : "40 to 80% OFF",
     task : "shop now"
   },
   {
     id : 2,
-    img1 : "../../src/assets/clothing5.jpg",
-    img2 : "../../src/assets/women-shirts.jpg",
-    img3 : "../../src/assets/kids-shirts.jpg",
+    img1 : men_shirt,
+    img2 : women_shirt,
+    img3 : kid_shirt,
     name : "Shirts",
     discount : "50 to 90% OFF",
     task : "shop now"
   },
   {
     id : 3,
-    img1 : "../../src/assets/clothing4.jpg",
-    img2 : "../../src/assets/women-jeans.jpg",
-    img3 : "../../src/assets/Kids-Jeans.jpg",
+    img1 : men_jeans,
+    img2 : women_jeans,
+    img3 : kid_jeans,
     name : "Jeans",
     discount : "20 to 70% OFF",
     task : "shop now"
   },
   {
     id : 4,
-    img1 : "../../src/assets/shorts.jpg",
-    img2 : "../../src/assets/women-shorts.jpg",
-    img3 : "../../src/assets/kids-shorts.jpg",
+    img1 : men_shorts,
+    img2 : women_shorts,
+    img3 : kid_shorts,
     name : "Shorts",
     discount : "10 to 20% OFF",
     task : "shop now"
   },
   {
     id : 5,
-    img1 : "../../src/assets/men-winter-wear.jpg",
-    img2 : "../../src/assets/women-winter-wear.jpg",
-    img3 : "../../src/assets/kids-winter-wear.jpg",
+    img1 : men_winter_wear,
+    img2 : women_winter_wear,
+    img3 : kid_winter_wear,
     name : "Winter wear",
     discount : "10 to 20% OFF",
     task : "shop now"
   },
   {
     id : 6,
-    img1 : "../../src/assets/Men-Sports-Wear.jpg",
-    img2 : "../../src/assets/Women-Sports-Wear.jpg",
-    img3 : "../../src/assets/kids-sports-wear.jpg",
+    img1 : men_sports_wear,
+    img2 : women_sports_wear,
+    img3 : kid_sports_wear,
     name : "Sports wear",
     discount : "30 to 40% OFF",
     task : "shop now"
