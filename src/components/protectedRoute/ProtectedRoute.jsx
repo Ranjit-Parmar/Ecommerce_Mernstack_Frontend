@@ -23,7 +23,7 @@ const ProtectedRoute = ({ children }) => {
         toast.error("please login again")
         return <Navigate to="/login" replace={true}/>
     }
-      dispatch(logInUser(userdata[0]))
+      dispatch(logInUser(userdata))
       dispatch(fetchCartItems(data))
     
 
