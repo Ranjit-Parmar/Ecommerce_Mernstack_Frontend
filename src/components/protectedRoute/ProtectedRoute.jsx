@@ -11,6 +11,8 @@ const ProtectedRoute = ({ children }) => {
   const {user, isLoggedInUser} = useSelector((state)=>state.userReducer);
   const dispatch = useDispatch();
   const data = useLoaderData();
+
+  console.log(data);
   
   useEffect(()=>{
     
