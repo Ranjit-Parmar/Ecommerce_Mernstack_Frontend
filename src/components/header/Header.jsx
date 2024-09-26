@@ -69,7 +69,7 @@ const Header = () => {
             dispatch(fetchCartItems([]))
             dispatch(resetCart())
             localStorage.clear();
-            Navigate('/login-signup');
+            Navigate('/login');
             toast.success('logout successfully')
             
         }else{
