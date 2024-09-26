@@ -3,30 +3,33 @@ import { fetchCartItems } from '../../redux/reducers/cartReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { logInUser, logOutUser } from '../../redux/reducers/userReducer';
 import { useEffect } from 'react';
+import { useMyCartItemsQuery } from '../../redux/Api/cartApi';
 
 
 
 const ProtectedRoute = ({ children }) => { 
 
   const {user, isLoggedInUser} = useSelector((state)=>state.userReducer);
+  const {data, isLoading, isError} = useMyCartItemsQuery();
   const dispatch = useDispatch();
-  const data = useLoaderData();
+  const userdata = useLoaderData();
+
 
   
   useEffect(()=>{
     
-    if(data.status === 401){
+    if(userdata.status === 401){
         dispatch(logOutUser());
         toast.error("please login again")
         return <Navigate to="/login" replace={true}/>
     }
-      dispatch(logInUser(data[0]))
-      dispatch(fetchCartItems(data[1]))
+      dispatch(logInUser(userdata[0]))
+      dispatch(fetchCartItems(data))
     
 
   },[])
 
-  if(user){
+  if(!isLoading && data){
     return children;
 
   }else{
