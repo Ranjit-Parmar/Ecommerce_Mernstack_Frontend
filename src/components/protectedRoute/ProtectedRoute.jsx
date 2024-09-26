@@ -29,7 +29,7 @@ const ProtectedRoute = ({ children }) => {
     return children;
 
   }else{
-    return <Navigate to={'/login-signup'} replace={true}/>
+    return <Navigate to={'/login'} replace={true}/>
   }
     
 
