@@ -12,7 +12,6 @@ const ProtectedRoute = ({ children }) => {
   const dispatch = useDispatch();
   const data = useLoaderData();
 
-  console.log(data);
   
   useEffect(()=>{
     
@@ -27,7 +26,7 @@ const ProtectedRoute = ({ children }) => {
 
   },[user,dispatch,data])
 
-  if(isLoggedInUser){
+  if(data){
     return children;
 
   }else{
