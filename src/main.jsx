@@ -42,7 +42,7 @@ import { Provider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { loadUser } from './redux/reducers/userReducer.js';
 import { fetchItems, getStripeKey } from './redux/reducers/cartReducer.js';
-import {BeatLoader} from "react-spinners/";
+import Spinner from './components/Spinner/Spinner.jsx';
 
 
  
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
     element: <>
         <Toaster />
         <ProtectedRoute>
-          <Suspense fallback={<BeatLoader color={'#fa7e0a'} style={{textAlign: 'center'}}/>}>
+          <Suspense fallback={<Spinner/>}>
             <App /> 
           </Suspense>
         </ProtectedRoute>
@@ -139,7 +139,7 @@ const router = createBrowserRouter([
     path : "/login",
     element: (
       <>
-        <Suspense fallback={<BeatLoader color={'#fa7e0a'} style={{textAlign: 'center'}}/>}>
+        <Suspense fallback={<Spinner/>}>
         <LoginSignup />
         </Suspense>
       </>
@@ -157,7 +157,7 @@ const router = createBrowserRouter([
     element: <>
       <Toaster />
       <ProtectedAdminRoute>
-        <Suspense fallback={<BeatLoader color={'#fa7e0a'} style={{textAlign: 'center'}}/>}>
+      <Suspense fallback={<Spinner/>}>
         <Admin />
         </Suspense>
       </ProtectedAdminRoute>
