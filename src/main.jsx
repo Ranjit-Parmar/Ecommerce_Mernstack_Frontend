@@ -217,7 +217,6 @@ const router = createBrowserRouter([
       }catch(err){
         return err;
         // console.log(err);
-        
       }
       
     },
