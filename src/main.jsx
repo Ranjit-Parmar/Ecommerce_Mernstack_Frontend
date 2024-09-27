@@ -224,7 +224,6 @@ const router = createBrowserRouter([
             <App /> 
         </ProtectedRoute>
            </>,
-    errorElement: <h1>Page not found</h1>,
     children: [
       {
         index: true,
