@@ -64,7 +64,7 @@ const router = createBrowserRouter([
     element: <>
         <Toaster />
         <ProtectedRoute>
-          <Suspense fallback={<BeatLoader color={'#fa7e0a'} style={{margin:'auto'}}/>}>
+          <Suspense fallback={<BeatLoader color={'#fa7e0a'} style={{textAlign: 'center'}}/>}>
             <App /> 
           </Suspense>
         </ProtectedRoute>
@@ -139,7 +139,7 @@ const router = createBrowserRouter([
     path : "/login",
     element: (
       <>
-        <Suspense fallback={<BeatLoader color={'#fa7e0a'} style={{margin:'auto'}}/>}>
+        <Suspense fallback={<BeatLoader color={'#fa7e0a'} style={{textAlign: 'center'}}/>}>
         <LoginSignup />
         </Suspense>
       </>
@@ -157,7 +157,7 @@ const router = createBrowserRouter([
     element: <>
       <Toaster />
       <ProtectedAdminRoute>
-        <Suspense fallback={<BeatLoader color={'#fa7e0a'} style={{margin:'auto'}}/>}>
+        <Suspense fallback={<BeatLoader color={'#fa7e0a'} style={{textAlign: 'center'}}/>}>
         <Admin />
         </Suspense>
       </ProtectedAdminRoute>
