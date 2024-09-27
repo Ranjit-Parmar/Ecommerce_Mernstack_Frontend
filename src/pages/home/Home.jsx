@@ -18,6 +18,7 @@ import shoes2 from '../../assets/shoes2.jpg'
 import { useNavigate } from 'react-router-dom'
 import { useGetAllProductsQuery } from '../../redux/Api/productApi'
 import { Helmet } from 'react-helmet-async'
+import Loader from '../../components/Loader/Loader'
 
 const dummyData = [
   {
@@ -123,7 +124,7 @@ const Home = () => {
   return (
     <>
     {
-      isLoading? "Loading..." : (
+      isLoading? <Loader/> : (
         <>
         <Helmet title="Home- Mern-Ecommerce-App"/>
         

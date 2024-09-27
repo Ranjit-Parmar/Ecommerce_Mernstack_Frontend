@@ -3,6 +3,7 @@ import { useLocation, useParams } from 'react-router-dom'
 import { useCreateCouponMutation, useUpdateCouponMutation, useGetSingleCouponQuery } from '../../../redux/Api/couponApi';
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../Loader/Loader';
 
 const Add_Edit_Coupon = () => {
 
@@ -66,7 +67,7 @@ const Add_Edit_Coupon = () => {
   }
   
   return (
-    isLoading?"Loading...": <div className='m-2 lg:m-6'>
+    isLoading?<Loader/>: <div className='m-2 lg:m-6'>
     <form onSubmit={submitHandler} className="lg:w-1/2 bg-white m-auto py-5 lg:py-10 px-6 lg:px-[30px] shadow-lg">
         <h1 className='my-5 mx-0 text-lg lg:text-xl font-medium'>{state==='update'?"Update Coupon":"Create Coupon"}</h1>
         {state==="create"?<div className="flex flex-col gap-3 lg:gap-[20px] mt-[30px]">

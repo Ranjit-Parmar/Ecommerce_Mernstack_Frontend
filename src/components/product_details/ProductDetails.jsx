@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { useAddToCartItemsMutation } from '../../redux/Api/cartApi';
 import { Helmet } from 'react-helmet-async';
+import Loader from '../Loader/Loader.jsx';
 
 
 const ProductDetails = () => {
@@ -66,7 +67,7 @@ const ProductDetails = () => {
     }
 
     return (
-        isLoading ? "Loading" : <>
+        isLoading ? <Loader/> : <>
     <Helmet title='Product Details- Mern-Ecommerce-App'/>
             <div className="flex lg:flex-row flex-col gap-3 my-0 lg:mx-24 h-full">
                 <div className="flex lg:flex-col gap-3 lg:p-3 lg:w-1/2 m-auto">

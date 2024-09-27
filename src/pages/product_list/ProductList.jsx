@@ -6,6 +6,7 @@ import { ShopContext } from '../../context/ShopContext'
 import { useGetAllProductsQuery } from '../../redux/Api/productApi'
 import { RxCross1 } from 'react-icons/rx'
 import { useLocation } from 'react-router-dom'
+import Loader from '../../components/Loader/Loader'
 
 
 const ProductList = () => {
@@ -117,7 +118,7 @@ const ProductList = () => {
 
   
     return (
-        isLoading ? "Loading..." : <>
+        isLoading ? <Loader/> : <>
             
             <div className='m-2 lg:m-6'>
                 <div className='w-full bg-white'>

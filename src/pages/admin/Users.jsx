@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { Helmet } from 'react-helmet-async'
 import profileIcon from '../../assets/profile-icon.png';
+import Loader from '../../components/Loader/Loader'
 
 
 const Users = () => {
@@ -42,7 +43,7 @@ const Users = () => {
 
 
     return (
-        isLoading?'Loading...':<>
+        isLoading?<Loader/>:<>
         <Helmet title="Users- Mern-Ecommerce-App"/>
             <h1 className="my-6 text-lg font-medium">Users</h1>
 

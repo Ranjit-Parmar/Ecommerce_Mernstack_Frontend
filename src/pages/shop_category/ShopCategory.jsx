@@ -25,6 +25,7 @@ import kid_winter_wear from '../../assets/kids-winter-wear.jpg';
 import men_sports_wear from '../../assets/Men-Sports-Wear.jpg';
 import women_sports_wear from '../../assets/Women-Sports-Wear.jpg';
 import kid_sports_wear from '../../assets/kids-sports-wear.jpg';
+import Loader from '../../components/Loader/Loader'
 
 const dummyData = [
   {
@@ -93,7 +94,7 @@ const ShopCategory = () => {
   
 
   return (
-    isLoading?"Loading...":<>
+    isLoading?<Loader/>:<>
     <Helmet title={gender=='male'?'Men- Mern-Ecommerce-App':gender=='female'?'Women- Mern-Ecommerce-App':'Kids- Mern-Ecommerce-App'}/>
     <div className='m-2 lg:m-6'>
         {gender == 'male'?<img src={men_model} alt="" className=' h-[250px] lg:h-[500px] w-full'/>:gender=='female'?<img src={Women_model} alt="" className=' h-[250px] lg:h-[500px] w-full'/>:<img src={kid_model} alt="" className=' h-[250px] lg:h-[500px] w-full'/>}

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useGetAllCategoriesQuery } from '../../../redux/Api/productApi';
+import Loader from '../../Loader/Loader';
 
 const Filter = ({sortFunc,categorySort,searchHandler}) => {
 
@@ -12,7 +13,7 @@ const Filter = ({sortFunc,categorySort,searchHandler}) => {
     }
     
   return (
-    isLoading?'Loading...': <> <div className="min-w-0 rounded-lg overflow-hidden bg-white  shadow-sm rounded-t-lg rounded-0 mb-4">
+    isLoading?<Loader/>: <> <div className="min-w-0 rounded-lg overflow-hidden bg-white  shadow-sm rounded-t-lg rounded-0 mb-4">
                     <div className="p-4 ">
                         <div className="py-3 grid gap-4 lg:gap-6 xl:gap-6 md:flex xl:flex">
 

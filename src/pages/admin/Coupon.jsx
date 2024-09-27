@@ -5,6 +5,7 @@ import { useDeleteCouponMutation, useGetAllCouponQuery } from '../../redux/Api/c
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async'
+import Loader from '../../components/Loader/Loader'
 
 const Coupon = () => {
 
@@ -34,7 +35,7 @@ const Coupon = () => {
 
 
     return (
-        isLoading ? 'Loading...' :  <>
+        isLoading ? <Loader/> :  <>
         <Helmet title="Coupon- Mern-Ecommerce-App"/>
             <h1 className="my-6 text-lg font-medium">Coupons</h1>
 

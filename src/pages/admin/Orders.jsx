@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react'
-import Pagination from '../../components/admin/pagination/Pagination'
 import { useDeleteOrderMutation, useGetAllOrdersQuery, useUpdateOrderMutation } from '../../redux/Api/orderApi'
 import toast from 'react-hot-toast';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { Helmet } from 'react-helmet-async';
+import Loader from '../../components/Loader/Loader';
 
 const Orders = () => {
 
@@ -92,7 +92,7 @@ const Orders = () => {
                             
                     </div>
                 </div>
-    {isLoading?'Loading...':<div className="w-full overflow-x-auto">
+    {isLoading?<Loader/>:<div className="w-full overflow-x-auto">
                     <table className="w-full whitespace-nowrap">
                         <thead className="text-xs font-semibold tracking-wide text-left uppercase bg-black text-white">
                             <tr>

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useGetProductDetailsQuery } from '../../redux/Api/productApi'
-import { ShopContext } from '../../context/ShopContext'
 import { Helmet } from 'react-helmet-async'
+import Loader from '../../components/Loader/Loader'
 
 const ProductDetails = () => {
     const Navigate = useNavigate()
@@ -13,7 +13,7 @@ const ProductDetails = () => {
 
 
     return (
-        isLoading ? "Loading" : <>
+        isLoading ? <Loader/> : <>
         <Helmet title="Product Details- Mern-Ecommerce-App"/>
             <h1 className="my-6 font-medium">Product Detail</h1>
             <div className="rounded-lg overflow-hidden bg-white shadow-sm rounded-t-lg rounded-0 mb-4">

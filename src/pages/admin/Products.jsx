@@ -1,10 +1,11 @@
-import React, { useContext, useRef, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import React, { useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { MdEdit } from 'react-icons/md'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { FaEye } from 'react-icons/fa'
 import { useDeleteProductMutation, useGetAllCategoriesQuery, useGetAllProductsQuery } from '../../redux/Api/productApi'
 import toast from 'react-hot-toast'
+import Loader from '../../components/Loader/Loader'
 
 const Products = () => {
 
@@ -40,7 +41,7 @@ const Products = () => {
 
 
     return (
-        isLoading ? "loading..." : <>
+        isLoading ? <Loader/> : <>
             <h1 className="my-6 text-lg font-medium">Products</h1>
             <div className="min-w-0 rounded-lg overflow-hidden bg-white  shadow-sm rounded-t-lg rounded-0 mb-4">
                 <div className="p-4">

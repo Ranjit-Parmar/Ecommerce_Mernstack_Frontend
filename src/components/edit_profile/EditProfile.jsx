@@ -7,6 +7,7 @@ import toast from 'react-hot-toast'
 import { RxCross1 } from 'react-icons/rx'
 import axios from 'axios'
 import { Helmet } from 'react-helmet-async'
+import Loader from '../Loader/Loader'
 
 const EditProfile = () => {
     const Navigate = useNavigate()
@@ -86,7 +87,7 @@ const EditProfile = () => {
 
 
     return (
-        isLoading ? "Loading..." : <>
+        isLoading ? <Loader/> : <>
         <Helmet title="Edit Profile- Mern-Ecommerce-App"/>
             <div className='m-2 lg:m-6'>
                 <form onSubmit={submitHandler} className="lg:w-1/2 bg-white m-auto py-5 lg:py-10 px-6 lg:px-[30px] shadow-lg">

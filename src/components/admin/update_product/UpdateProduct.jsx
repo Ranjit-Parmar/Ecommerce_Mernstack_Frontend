@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { useGetProductDetailsQuery, useUpdateProductMutation } from '../../../redux/Api/productApi'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import Loader from '../../Loader/Loader'
 
 const UpdateProduct = () => {
     const Navigate = useNavigate();
@@ -105,7 +106,7 @@ const UpdateProduct = () => {
     }
 
     return (
-        isLoading ? 'Loading...' :
+        isLoading ? <Loader/> :
             <>
             <Helmet title="Update Product- Mern-Ecommerce-App"/>
                 <h1 className="my-6  font-medium">Update Product</h1>

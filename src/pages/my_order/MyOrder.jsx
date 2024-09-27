@@ -4,6 +4,7 @@ import { useMyOrdersQuery } from '../../redux/Api/orderApi'
 import { useSelector } from 'react-redux'
 import { MdOutlineSmsFailed } from "react-icons/md";
 import { Helmet } from 'react-helmet-async';
+import Loader from '../../components/Loader/Loader';
 
 const MyOrder = () => {
 
@@ -30,7 +31,7 @@ const MyOrder = () => {
 
 
 
-            {isLoading?"Loading...": data?.getMyOrder?.map((val,i)=>{
+            {isLoading?<Loader/>: data?.getMyOrder?.map((val,i)=>{
               return (
                 <div key={i} className={`${userOrders? "block":"hidden"}`}>
                 <div  className="px-4 py-6 sm:px-6 ">
