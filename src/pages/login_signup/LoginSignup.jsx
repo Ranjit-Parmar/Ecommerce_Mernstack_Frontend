@@ -35,11 +35,13 @@ const LoginSignup = () => {
     let getCookieValue = cookies.get('token');
     if(getCookieValue){
       Navigate('/', {replace:true})
+    }else{
+
+      dispatch(resetCart());
+      localStorage.clear()
     }  
    
     
-    dispatch(resetCart());
-    localStorage.clear()
   },[accountState, logInUser, registerUser])
 
 
