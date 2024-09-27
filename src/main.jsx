@@ -209,8 +209,11 @@ const router = createBrowserRouter([
     path: "/",
      loader: async () => {
       try{
-      let userData = await loadUser();
-        return userData;
+      let userData = await loadUser()
+      if(userData){
+        let cartData = await fetchItems()
+        return [userData, cartData]
+      }
       }catch(err){
         return err;
       }
@@ -224,7 +227,7 @@ const router = createBrowserRouter([
     errorElement: <PageNotFound />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Home />
                 
       },
