@@ -224,10 +224,10 @@ const router = createBrowserRouter([
             <App /> 
         </ProtectedRoute>
            </>,
-    errorElement: <PageNotFound />,
+    errorElement: <h1>Page not found</h1>,
     children: [
       {
-        path: "",
+        path: "/",
         element: <Home />
                 
       },
