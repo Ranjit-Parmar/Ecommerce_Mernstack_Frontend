@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import {  Link, Navigate } from 'react-router-dom'
+import {  Link, useNavigate } from 'react-router-dom'
 import {  useLoginUserMutation, useRegisterUserMutation } from '../../redux/Api/userApi'
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
@@ -14,6 +14,7 @@ import cookies from 'js-cookie';
 const LoginSignup = () => {
 
   const dispatch = useDispatch();
+  const Navigate = useNavigate();
 
   const [accountState, setAccountState] = useState("Login")
   
@@ -33,8 +34,7 @@ const LoginSignup = () => {
 
     let getCookieValue = cookies.get('token');
     if(getCookieValue){
-      // Navigate('', {replace:true})
-    return  <Navigate to={'/'} replace={true}/>
+      Navigate('/', {replace:true})
     }  
    
     
@@ -63,7 +63,7 @@ const submitHandler = async (e) => {
         if(res.data && res?.data?.success){
           const cartData = await fetchItems();
           dispatch(logInUser(res?.data?.userData));
-          <Navigate to={'/'} replace={true}/>
+          Navigate('/', {replace:true})
           dispatch(fetchCartItems(cartData))
         }else{
           const {data} = res?.error
@@ -80,7 +80,7 @@ const submitHandler = async (e) => {
             if (res.data) {
               const cartData = await fetchItems();
               dispatch(logInUser(res?.data?.userData));
-              <Navigate to={'/'} replace={true}/>
+              Navigate('/', {replace:true})
               dispatch(fetchCartItems(cartData))
             }else{
               const {data} = res?.error
