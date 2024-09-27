@@ -215,8 +215,11 @@ const router = createBrowserRouter([
         return [userData, cartData]
       }
       }catch(err){
-        return err;
+        // return err;
+        console.log(err);
+        
       }
+      
     },
     element: <>
         <Toaster />
