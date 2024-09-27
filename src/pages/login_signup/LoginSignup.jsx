@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logInUser } from '../../redux/reducers/userReducer';
 import { fetchCartItems, fetchItems, resetCart } from '../../redux/reducers/cartReducer';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import cookies from 'js-cookie';
 
 
 
@@ -33,26 +32,22 @@ const LoginSignup = () => {
   
   useEffect(()=>{   
 
-    let getCookieValue = cookies.get('token');
-    console.log(getCookieValue);
-    console.log(isLoggedInUser);
-    
     if(isLoggedInUser){
       Navigate('/', {replace:true})
     }
 
       dispatch(resetCart());
+
       localStorage.clear()
-     
-   
     
   },[accountState, logInUser, registerUser])
 
 
 const submitHandler = async (e) => {
-  e.preventDefault();
-  if(accountState === 'signup'){
 
+  e.preventDefault();
+
+  if(accountState === 'signup'){
 
     if(!name || !email || !password){
 
@@ -60,20 +55,22 @@ const submitHandler = async (e) => {
 
     }else{
 
-    
-
         const res = await registerUser({
           name, email, password
         })
 
         if(res.data && res?.data?.success){
+
           const cartData = await fetchItems();
           dispatch(logInUser(res?.data?.userData));
           Navigate('/', {replace:true})
           dispatch(fetchCartItems(cartData))
+
         }else{
+
           const {data} = res?.error
           toast.error(data?.message); 
+
         }
            
     }
@@ -84,13 +81,17 @@ const submitHandler = async (e) => {
             });    
             
             if (res.data) {
+
               const cartData = await fetchItems();
               dispatch(logInUser(res?.data?.userData));
               Navigate('/', {replace:true})
               dispatch(fetchCartItems(cartData))
+
             }else{
+
               const {data} = res?.error
               toast.error(data?.message);  
+              
             }
           
   }
