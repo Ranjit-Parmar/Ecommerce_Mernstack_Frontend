@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
@@ -37,6 +37,8 @@ import ForgottenPassword from './pages/forgotPassword/ForgottenPassword.jsx';
 import ResetPassword from './pages/resetPassword/ResetPassword.jsx';
 import { fetchItems, getStripeKey } from './redux/reducers/cartReducer.js';
 import PageNotFound from './pages/pageNotFound/PageNotFound.jsx';
+import {BeatLoader} from "react-spinners/";
+
 
 
 const router = createBrowserRouter([
@@ -57,10 +59,13 @@ const router = createBrowserRouter([
     element: <>
         <Toaster />
         <ProtectedRoute>
+          <Suspense fallback={<BeatLoader/>}>
             <App /> 
+          </Suspense>
         </ProtectedRoute>
            </>,
     children: [
+      
       {
         index: true,
         element: <Home />
@@ -121,6 +126,7 @@ const router = createBrowserRouter([
         path: '*',
         element: <PageNotFound />
       }
+      
 
     ]
   },
@@ -144,7 +150,9 @@ const router = createBrowserRouter([
     element: <>
       <Toaster />
       <ProtectedAdminRoute>
+        <Suspense fallback={<BeatLoader/>}>
         <Admin />
+        </Suspense>
       </ProtectedAdminRoute>
     </>,
     children: [
