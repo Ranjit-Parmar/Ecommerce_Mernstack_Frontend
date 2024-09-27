@@ -41,11 +41,9 @@ const ProtectedRoute = ({ children }) => {
 
   if(isLoggedInUser){
     return children;
-
-  }else{
-    return <Navigate to={'/login'} replace={true}/>
   }
-    
+
+    return <Navigate to={'/login'} replace={true}/>
 
 }
 
