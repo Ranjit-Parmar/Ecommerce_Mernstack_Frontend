@@ -33,6 +33,8 @@ const LoginSignup = () => {
   useEffect(()=>{   
 
     let getCookieValue = cookies.get('token');
+    console.log(getCookieValue);
+    
     if(getCookieValue){
       Navigate('/', {replace:true})
     }
