@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import {  Link, useNavigate } from 'react-router-dom'
 import {  useLoginUserMutation, useRegisterUserMutation } from '../../redux/Api/userApi'
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logInUser } from '../../redux/reducers/userReducer';
 import { fetchCartItems, fetchItems, resetCart } from '../../redux/reducers/cartReducer';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
@@ -17,6 +17,7 @@ const LoginSignup = () => {
   const Navigate = useNavigate();
 
   const [accountState, setAccountState] = useState("Login")
+  const {isLoggedInUser} = useSelector((state)=>state.userReducer);
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,8 +35,9 @@ const LoginSignup = () => {
 
     let getCookieValue = cookies.get('token');
     console.log(getCookieValue);
+    console.log(isLoggedInUser);
     
-    if(getCookieValue){
+    if(isLoggedInUser){
       Navigate('/', {replace:true})
     }
 
