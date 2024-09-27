@@ -212,11 +212,11 @@ const router = createBrowserRouter([
       let userData = await loadUser()
       if(userData){
         let cartData = await fetchItems()
-        return [userData, cartData]
+        return [userData, cartData] || null
       }
       }catch(err){
-        // return err;
-        console.log(err);
+        return err;
+        // console.log(err);
         
       }
       
