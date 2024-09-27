@@ -139,7 +139,9 @@ const router = createBrowserRouter([
     path : "/login",
     element: (
       <>
+        <Suspense fallback={<BeatLoader/>}>
         <LoginSignup />
+        </Suspense>
       </>
     )
   },
