@@ -6,10 +6,10 @@ import { useEffect } from 'react';
 import { useMyCartItemsQuery } from '../../redux/Api/cartApi';
 
 
-export const fetchCartData = async () => {
-   const cartItemsData = await fetchItems()
-   return  cartItemsData
-}
+// export const fetchCartData = async () => {
+//    const cartItemsData = await fetchItems()
+//    return  cartItemsData
+// }
 
 const ProtectedRoute = ({ children }) => { 
 
@@ -21,25 +21,25 @@ const ProtectedRoute = ({ children }) => {
   
   useEffect(()=>{
     
-    // if(userdata.status === 401){
-    //     dispatch(logOutUser());
-    //     toast.error("please login again")
-    //     return <Navigate to="/login" replace={true}/>
-    // }
-    //   dispatch(logInUser(userdata))
-    //   dispatch(fetchCartItems(data))
+    if(userdata.status === 401){
+        dispatch(logOutUser());
+        toast.error("please login again")
+        return <Navigate to="/login" replace={true}/>
+    }
+      dispatch(logInUser(userdata))
+      dispatch(fetchCartItems(data))
     
 
-    if(userdata){
-        fetchCartData().then((data)=>{
-            dispatch(fetchCartItems(data))
-        }).catch((err)=>{console.log(err);
-        })
-        dispatch(logInUser(userdata))
-    }
+    // if(userdata){
+    //     fetchCartData().then((data)=>{
+    //         dispatch(fetchCartItems(data))
+    //     }).catch((err)=>{console.log(err);
+    //     })
+    //     dispatch(logInUser(userdata))
+    // }
   },[userdata,dispatch])
 
-  if(userdata){
+  if(isLoggedInUser){
     return children;
 
   }else{

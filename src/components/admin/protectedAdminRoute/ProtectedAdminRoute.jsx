@@ -24,7 +24,7 @@ const ProtectedAdminRoute = ({children}) => {
           dispatch(logInUser(data))
         }
     
-      },[])
+      },[data])
     
     if(!isLoggedInUser){
         
