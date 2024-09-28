@@ -32,13 +32,12 @@ const LoginSignup = () => {
 
   useEffect(() => {
 
-    if (isLoggedInUser) {
-      Navigate('/', { replace: true })
-    } {
+    if (isLoggedInUser) Navigate('/', { replace: true });
+    
       dispatch(resetCart());
 
       localStorage.clear()
-    }
+    
 
 
   }, [accountState, logInUser, registerUser, isLoggedInUser])
