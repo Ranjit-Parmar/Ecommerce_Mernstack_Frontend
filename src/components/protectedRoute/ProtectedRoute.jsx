@@ -24,7 +24,7 @@ const ProtectedRoute = ({ children }) => {
 
   },[userdata,dispatch])
 
-  if(isLoggedInUser){
+  if(userdata[0]){
     return children;
   }
 
