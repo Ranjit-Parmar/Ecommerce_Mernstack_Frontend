@@ -52,10 +52,12 @@ const router = createBrowserRouter([
      loader: async () => {
       try{
       let userData = await loadUser()
-      if(userData){
-        let cartData = await fetchItems()
-        return [userData, cartData] || null
-      }
+      let cartData = await fetchItems()
+      return [userData, cartData] || null
+      // if(userData){
+      //   let cartData = await fetchItems()
+      //   return [userData, cartData] || null
+      // }
       }catch(err){
         return err;
       }
