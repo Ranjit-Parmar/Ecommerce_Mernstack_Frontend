@@ -30,7 +30,7 @@ const ProtectedAdminRoute = ({children}) => {
         return <Navigate to={'/login'} replace={true}/>
     }
     if(data && data?.role === 'user'){
-        return <Navigate to={'/admin'} replace={true}/>
+        return <Navigate to={'/'} replace={true}/>
     }
     return children;
 
