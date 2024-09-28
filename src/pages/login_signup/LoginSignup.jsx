@@ -16,6 +16,7 @@ const LoginSignup = () => {
   const Navigate = useNavigate();
 
   const [accountState, setAccountState] = useState("Login")
+  const [button, setButton] = useState(false)
   const { isLoggedInUser } = useSelector((state) => state.userReducer);
 
   const [email, setEmail] = useState('');
@@ -47,6 +48,8 @@ const LoginSignup = () => {
 
     e.preventDefault();
 
+    setButton(true);
+
     if (accountState === 'signup') {
 
       if (!name || !email || !password) toast.error('please provide all the fields');
@@ -59,6 +62,7 @@ const LoginSignup = () => {
 
         const cartData = await fetchItems();
         dispatch(logInUser(res?.data?.userData));
+        setButton(false);
         Navigate('/', { replace: true })
         dispatch(fetchCartItems(cartData))
 
@@ -66,6 +70,7 @@ const LoginSignup = () => {
 
         const { data } = res?.error
         toast.error(data?.message);
+        setButton(false);
       }
 
     } else {
@@ -79,6 +84,7 @@ const LoginSignup = () => {
 
         const cartData = await fetchItems();
         dispatch(logInUser(res?.data?.userData));
+        setButton(true);
         Navigate('/', { replace: true })
         dispatch(fetchCartItems(cartData))
 
@@ -86,6 +92,7 @@ const LoginSignup = () => {
 
         const { data } = res?.error
         toast.error(data?.message);
+        setButton(false);
 
       }
 
@@ -114,7 +121,7 @@ const LoginSignup = () => {
                 <input type="email" placeholder='Enter Your Email' className='h-11 lg:h-[72px] w-full pl-5 border-[1px] border-gray-400 outline-none lg:text-lg' ref={emailRef} onChange={(e) => setEmail(e.target.value)} />
                 <input type="password" placeholder='Enter Your Password' className='h-11 lg:h-[72px] w-full pl-5 border-[1px] border-gray-400 outline-none lg:text-lg' ref={passwordRef} onChange={(e) => setPassword(e.target.value)} />
               </div>
-              <button className='w-full h-11 lg:h-[72px] text-white bg-orange-500 hover:bg-orange-600 mt-5 lg:mt-[30px] border-none tracking-wider text-lg lg:text-2xl font-medium cursor-pointer'>Continue</button>
+              <button className={`${button?'opacity-75 pointer-events-none':''} w-full h-11 lg:h-[72px] text-white bg-orange-500 hover:bg-orange-600 mt-5 lg:mt-[30px] border-none tracking-wider text-lg lg:text-2xl font-medium cursor-pointer`}>Continue</button>
               <p className="mt-5 text-xs lg:text-lg font-medium inline-block">{accountState == "signup" ? "Already have an account? " : "Create an account? "}<span className='text-red-500 font-semibold' onClick={() => { setAccountState((prev) => prev == "signup" ? "Login" : "signup") }}>{setAccountState == "signup" ? "Login here" : "Click here"}</span></p>
               <Link to={'/forgotPassword'} className='text-sm text-blue-700 hover:underline float-right mt-5'>forgotten password?</Link>
               <div className="flex items-center mt-[25px] gap-2 text-xs lg:gap-5 lg:text-lg">
