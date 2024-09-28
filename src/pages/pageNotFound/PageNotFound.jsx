@@ -9,7 +9,7 @@ const PageNotFound = () => {
       <FaExclamation className="text-red-500 lg:text-4xl"/>
 
       <h3 className="lg:text-lg">Page not found</h3>
-      <Link to="/" className="bg-orange-500 hover:bg-orange-600 text-white border-none text-xs px-1 py-3 cursor-pointer font-medium m-2 lg:w-40">Shop Now</Link>
+      <Link to="/" className="bg-orange-500 hover:bg-orange-600 text-white border-none text-xs px-1 py-3 cursor-pointer font-medium m-2 lg:w-40">Back</Link>
     </div>
     </>
   )
