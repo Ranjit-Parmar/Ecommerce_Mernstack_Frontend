@@ -127,12 +127,7 @@ const router = createBrowserRouter([
         path: '/payment_fail',
         element: <OrderCancel />
       },
-      {
-        path: '*',
-        element: <PageNotFound />
-      }
       
-
     ]
   },
   {
@@ -224,6 +219,12 @@ const router = createBrowserRouter([
       <ResetPassword />
     </>
   },
+  {
+    path: '*',
+    element: <PageNotFound />
+  }
+  
+
   
 ])
 
