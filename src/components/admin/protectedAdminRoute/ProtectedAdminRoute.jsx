@@ -27,7 +27,7 @@ const ProtectedAdminRoute = ({children}) => {
     
     if(!isLoggedInUser){
         
-        return <Navigate to={'/login-signup'} replace={true}/>
+        return <Navigate to={'/login'} replace={true}/>
     }
     if(data && data?.role === 'user'){
         return <Navigate to={'/'} replace={true}/>
