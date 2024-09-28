@@ -70,7 +70,7 @@ const LoginSignup = () => {
       }
 
     } else {
-      if (!email || !password) toast.error('please provide all the fields')
+      // if (!email || !password) toast.error('please provide all the fields')
 
       const res = await loginUser({
         email, password
