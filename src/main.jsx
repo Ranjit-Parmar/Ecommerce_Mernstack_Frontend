@@ -211,14 +211,18 @@ const router = createBrowserRouter([
     path: 'forgotPassword',
     element: <>
       <Toaster />
+      <Suspense fallback={<Spinner/>}>
       <ForgottenPassword />
+      </Suspense>
     </>
   },
   {
     path: 'forgotPassword/reset/:id',
     element: <>
       <Toaster />
+      <Suspense fallback={<Spinner/>}>
       <ResetPassword />
+      </Suspense>
     </>
   },
   {
