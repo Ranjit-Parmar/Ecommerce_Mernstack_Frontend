@@ -21,7 +21,7 @@ const ResetPassword = () => {
             const message = res?.data?.message;
             toast.success(message);
             setButton(false);
-            Navigate('/login-signup')
+            Navigate('/login')
             
         }else{
             toast.error('something went wrong');
