@@ -29,7 +29,7 @@ const ProtectedAdminRoute = ({children}) => {
         
         return <Navigate to={'/login-signup'} replace={true}/>
     }
-    if(user && user?.role === 'user'){
+    if(data && data?.role === 'user'){
         return <Navigate to={'/'} replace={true}/>
     }
     return children;
