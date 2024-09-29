@@ -98,7 +98,7 @@ const Users = () => {
 
                                 <td className="px-4 py-2">
                                     <div className=" rounded-full  w-10 h-10 mr-2 md:block bg-gray-50">
-                                        <img className="object-cover w-full h-full rounded-full" src={val?.photo?.length >= 0? val?.photo?.url[0] : profileIcon} alt="product" />
+                                        <img className="object-cover w-full h-full rounded-full" src={val?.photo?.length === 0? val?.photo[0].url : profileIcon} alt="product" />
                                     </div>
                                 </td>
                                 <td className="px-4 py-2">
