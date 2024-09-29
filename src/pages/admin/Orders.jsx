@@ -112,28 +112,28 @@ const Orders = () => {
 
                                 <td className="px-4 py-2">
                                     <div className="text-sm">
-                                        <span>#{val._id}</span>
+                                        <span>#{val?._id}</span>
                                     </div>
                                 </td>
                                 <td className="px-4 py-2">
-                                    <span className="text-sm">{val.createdAt}</span>
+                                    <span className="text-sm">{val?.createdAt}</span>
                                 </td>
                                 <td className="px-4 py-2">
-                                    <span className="text-sm">{val.user.email}</span>
+                                    <span className="text-sm">{val?.user?.email}</span>
                                 </td>
                                 <td className="px-4 py-2">
-                                    <span className="text-sm font-semibold">Rs. {val.totalPrice}</span>
+                                    <span className="text-sm font-semibold">Rs. {val?.totalPrice}</span>
                                 </td>
                                 <td className="px-4 py-2">
-                                    <span className={`text-sm ${val.orderStatus === 'processing'?"text-blue-600":val.orderStatus === 'delivered'?"text-green-600":val.orderStatus === 'pending'?"text-yellow-500":val.orderStatus === 'cancel'?"text-red-600":""} `}>{val.orderStatus}</span>
+                                    <span className={`text-sm ${val?.orderStatus === 'processing'?"text-blue-600":val?.orderStatus === 'delivered'?"text-green-600":val?.orderStatus === 'pending'?"text-yellow-500":val?.orderStatus === 'cancel'?"text-red-600":""} `}>{val?.orderStatus}</span>
                                 </td>
 
                                 <td className="px-4 py-2">
 
                                 <div className="flex justify-end text-right">
-                                    <button className="p-2 cursor-pointer text-gray-400 hover:text-orange-600 focus:outline-none" onClick={()=>{deleteHandler(val._id)}}><p className="text-xl"><RiDeleteBin6Line /></p></button>
+                                    <button className="p-2 cursor-pointer text-gray-400 hover:text-orange-600 focus:outline-none" onClick={()=>{deleteHandler(val?._id)}}><p className="text-xl"><RiDeleteBin6Line /></p></button>
                                         
-                                    <select className='rounded-md text-sm float-right' value={val.orderStatus} onChange={(e)=>{changleHandler(e,val._id)}}>
+                                    <select className='rounded-md text-sm float-right' value={val?.orderStatus} onChange={(e)=>{changleHandler(e,val._id)}}>
                                         <option value="delivered">Delivered</option>
                                         <option value="pending">Pending</option>
                                         <option value="processing">Processing</option>
