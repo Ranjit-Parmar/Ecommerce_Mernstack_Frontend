@@ -31,7 +31,7 @@ const Users = () => {
 
     const deleteHandler = async (userId) => {
         const {data} = await deleteUser(userId);
-        if(data.success){
+        if(data?.success){
             toast.success(data.message);
         }else{
             toast.error('something went wrong');
