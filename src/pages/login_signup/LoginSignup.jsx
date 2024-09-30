@@ -35,9 +35,12 @@ const LoginSignup = () => {
 
     if (userData) Navigate('/', { replace: true });
     
+
+      Navigate('/login', { replace: true })
       dispatch(resetCart());
 
       localStorage.clear()
+
     
 
 
