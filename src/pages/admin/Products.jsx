@@ -143,8 +143,8 @@ const Products = () => {
                         )
                     })}
                 </table>
-            </div>
             <Pagination totalProducts={data && data?.filteredProducts} productPerPage={data && data?.productPerPage} setPageNumberHandler={setPageNumberHandler}/>
+            </div>
         </>
     )
 }
