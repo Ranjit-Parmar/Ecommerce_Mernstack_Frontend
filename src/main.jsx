@@ -132,10 +132,12 @@ const router = createBrowserRouter([
     path : "/login",
     element: (
       <>
-        <Suspense fallback={<Spinner/>}>
         <Toaster/>
+        <ProtectedRoute>
+        <Suspense fallback={<Spinner/>}>
         <LoginSignup />
         </Suspense>
+        </ProtectedRoute>
       </>
     )
   },
