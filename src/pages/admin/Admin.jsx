@@ -26,8 +26,8 @@ const Admin = () => {
 
                 <div className="flex flex-col flex-1 w-full">
                     <Header/>
-                    <main className="h-full overflow-y-auto">
-                    <div className="grid lg:px-6 sm:px-4 px-2 mx-auto">
+                    <main className="h-full">
+                    <div className="grid lg:px-6 sm:px-4 px-2 mx-auto  overflow-y-auto">
                         <Outlet/>
                     </div>
                     </main>
