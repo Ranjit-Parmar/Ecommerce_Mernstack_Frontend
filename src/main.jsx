@@ -130,16 +130,6 @@ const router = createBrowserRouter([
   },
   {
     path : "/login",
-    loader: async () => {
-      try{
-      let userData = await loadUser();
-      
-      return userData|| null
-      }catch(err){
-        return err;
-      }
-      
-    },
     element: (
       <>
         <Suspense fallback={<Spinner/>}>
