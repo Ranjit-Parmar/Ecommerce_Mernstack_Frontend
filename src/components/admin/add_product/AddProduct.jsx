@@ -118,6 +118,8 @@ const AddProduct = () => {
                                     <option value="shirt">Shirt</option>
                                     <option value="tshirt">T-Shirt</option>
                                     <option value="jeans">Jeans</option>
+                                    <option value="topwear">topwear</option>
+                                    <option value="bottomwear">bottomwear</option>
                                 </select>
                                 <select name="gender" className='h-full flex-grow pl-5 border-gray-400 border-[1px]' onChange={(e) => {
                                     setProductValue((prev) => {
