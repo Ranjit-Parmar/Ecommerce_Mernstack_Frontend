@@ -31,17 +31,17 @@ const LoginSignup = () => {
   const passwordRef = useRef(null);
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (!isLoading && isLoggedInUser) Navigate('/', { replace: true });
+  //   if (!isLoading && isLoggedInUser) Navigate('/', { replace: true });
     
-      dispatch(resetCart());
+  //     dispatch(resetCart());
 
-      localStorage.clear()
+  //     localStorage.clear()
     
 
 
-  }, [accountState, isLoggedInUser, isLoading])
+  // }, [accountState, isLoggedInUser, isLoading])
 
 
   const submitHandler = async (e) => {
