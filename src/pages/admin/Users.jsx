@@ -19,7 +19,6 @@ const Users = () => {
     const inputRef = useRef()
     const Navigate = useNavigate();
 
-    const {user} = useSelector((state)=>state.userReducer);
     const {data, isLoading, isError} = useGetAllUsersQuery({search,selectUserRole});
     const [deleteUser] = useDeleteUserMutation();
    
@@ -85,7 +84,6 @@ const Users = () => {
                                 <td className="px-4 py-2">Name</td>
                                 <td className="px-4 py-2">Email</td>
                                 <td className="px-4 py-2">Role</td>
-                                <td className="px-4 py-2">status</td>
 
                                 <td className="px-4 py-2 text-right">actions</td>
                             </tr>
@@ -110,10 +108,7 @@ const Users = () => {
                                 <td className="px-4 py-2">
                                     <span className="text-sm">{val.role}</span>
                                 </td>
-                                <td className="px-4 py-2">
-                                    <span className={`text-sm ${val._id === user?._id?"text-green-500":"text-red-500"} `}>{val._id === user?._id ?'Active' : 'InActive'}</span>
-                                </td>
-
+                                
                                 <td className="px-4 py-2">
                                     <div className="flex justify-end text-right">
                                         <button className="p-2 cursor-pointer text-gray-400 hover:text-orange-600 focus:outline-none" onClick={()=>{deleteHandler(val._id)}}><p className="text-xl"><RiDeleteBin6Line /></p></button>
