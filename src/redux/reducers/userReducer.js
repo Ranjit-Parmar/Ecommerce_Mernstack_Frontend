@@ -12,6 +12,8 @@ export const userSlice = createSlice({
     initialState,
     reducers : {
         logInUser : (state, action) => {
+            console.log(action);
+            
 
             if(action.payload == null){
                     state.isLoading = true;
