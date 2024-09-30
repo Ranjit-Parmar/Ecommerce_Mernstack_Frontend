@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLoaderData, useNavigate } from 'react-router-dom'
 import { useLoginUserMutation, useRegisterUserMutation } from '../../redux/Api/userApi'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,10 +14,10 @@ const LoginSignup = () => {
 
   const dispatch = useDispatch();
   const Navigate = useNavigate();
+  const userData = useLoaderData();
 
   const [accountState, setAccountState] = useState("Login")
   const [button, setButton] = useState(false)
-  const { isLoggedInUser, isLoading } = useSelector((state) => state.userReducer);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,17 +31,17 @@ const LoginSignup = () => {
   const passwordRef = useRef(null);
 
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   if (!isLoading && isLoggedInUser) Navigate('/', { replace: true });
+    if (userData) Navigate('/', { replace: true });
     
-  //     dispatch(resetCart());
+      dispatch(resetCart());
 
-  //     localStorage.clear()
+      localStorage.clear()
     
 
 
-  // }, [accountState, isLoggedInUser, isLoading])
+  }, [accountState, userData])
 
 
   const submitHandler = async (e) => {

@@ -54,10 +54,6 @@ const router = createBrowserRouter([
       let userData = await loadUser()
       let cartData = await fetchItems()
       return [userData, cartData] || null
-      // if(userData){
-      //   let cartData = await fetchItems()
-      //   return [userData, cartData] || null
-      // }
       }catch(err){
         return err;
       }
@@ -134,6 +130,16 @@ const router = createBrowserRouter([
   },
   {
     path : "/login",
+    loader: async () => {
+      try{
+      let userData = await loadUser();
+      
+      return userData|| null
+      }catch(err){
+        return err;
+      }
+      
+    },
     element: (
       <>
         <Suspense fallback={<Spinner/>}>
