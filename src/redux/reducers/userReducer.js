@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-    isLoading : false,
+    isLoading : true,
     user :  null,
     isLoggedInUser : false
 }
@@ -11,29 +11,24 @@ export const userSlice = createSlice({
     name : "userReducer",
     initialState,
     reducers : {
-        logInUser : (state, action) => {
-            console.log(action);
-            
+        logInUser : (state, action) => {            
 
             if(action.payload == null){
-                    state.isLoading = true;
+                    state.isLoading = false;
                     state.user = null;
                     state.isLoggedInUser = false;
-                    state.isLoading = false;
             }else{
-                state.isLoading = true;
+                state.isLoading = false;
                 state.user = action.payload;
                 state.isLoggedInUser = true;
-                state.isLoading = false;
             }
             
         },
 
         logOutUser : (state,action) => {
-            state.isLoading = true;
+            state.isLoading = false
             state.user = action?.payload || null;
             state.isLoggedInUser = false;
-            state.isLoading = false
         }
         
     }
