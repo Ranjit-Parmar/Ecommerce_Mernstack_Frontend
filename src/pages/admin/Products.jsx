@@ -6,17 +6,25 @@ import { FaEye } from 'react-icons/fa'
 import { useDeleteProductMutation, useGetAllCategoriesQuery, useGetAllProductsQuery } from '../../redux/Api/productApi'
 import toast from 'react-hot-toast'
 import Loader from '../../components/Loader/Loader'
+import Pagination from '../../components/pagination/Pagination'
 
 const Products = () => {
 
+    const [page, setPage] = useState(1);
     const [sort, setSort] = useState('');
     const [search, setSearch] = useState('')
     const [selectCategoryArray, setSelectCategoryArray] = useState([])
     const inputRef = useRef();
     const Navigate = useNavigate();
 
+
+    const setPageNumberHandler = (val) => {
+        setPage(val);
+     }
+ 
+
     const { data: categoryData, isLoading: categoryIsLoading, isError: categoryIsError } = useGetAllCategoriesQuery();
-    const { data, isLoading, isError } = useGetAllProductsQuery({ sort, selectCategoryArray, search })
+    const { data, isLoading, isError } = useGetAllProductsQuery({ sort, selectCategoryArray, search, page })
     const [deleteProduct] = useDeleteProductMutation();
 
 
@@ -136,6 +144,7 @@ const Products = () => {
                     })}
                 </table>
             </div>
+            <Pagination totalProducts={data && data?.filteredProducts} productPerPage={data && data?.productPerPage} setPageNumberHandler={setPageNumberHandler}/>
         </>
     )
 }
