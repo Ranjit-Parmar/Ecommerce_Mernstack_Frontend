@@ -12,11 +12,11 @@ import women_tshirt from '../../assets/exclusive_image.png';
 import kid_tshirt from '../../assets/clothing8.jpg';
 import men_shirt from '../../assets/clothing5.jpg';
 import women_shirt from '../../assets/women-shirts.jpg';
-// import kid_shirt from '../../assets/kids-shirts.jpg';
+import kid_shirt from '../../assets/kids-shirts.jpg';
 import men_jeans from '../../assets/clothing4.jpg';
 import women_jeans from '../../assets/women-jeans.jpg';
 import kid_jeans from '../../assets/Kids-Jeans.jpg';
-// import men_shorts from '../../assets/shorts.jpg';
+import men_shorts from '../../assets/Shorts.jpg';
 import women_shorts from '../../assets/women-shorts.jpg';
 import kid_shorts from '../../assets/kids-shorts.jpg';
 import men_winter_wear from '../../assets/men-winter-wear.jpg';
@@ -41,6 +41,7 @@ const dummyData = [
     id : 2,
     img1 : men_shirt,
     img2 : women_shirt,
+    img2 : kid_shirt,
     img3 : '../../assets/kids-shirts.jpg',
     name : "Shirts",
     discount : "50 to 90% OFF",
@@ -58,6 +59,7 @@ const dummyData = [
   {
     id : 4,
     img1 : '../../assets/Shorts.jpg',
+    img2 : men_shorts,
     img2 : women_shorts,
     img3 : kid_shorts,
     name : "Shorts",
