@@ -41,7 +41,7 @@ const LoginSignup = () => {
     
 
 
-  }, [accountState, userData])
+  }, [])
 
 
   const submitHandler = async (e) => {
