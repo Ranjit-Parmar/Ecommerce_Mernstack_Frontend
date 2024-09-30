@@ -65,10 +65,6 @@ const Header = () => {
 
         const {data} = await axios(option);
         if(data.success){
-            dispatch(logOutUser(null))
-            dispatch(fetchCartItems([]))
-            dispatch(resetCart())
-            localStorage.clear();
             Navigate('/login');
             toast.success('logout successfully')
             

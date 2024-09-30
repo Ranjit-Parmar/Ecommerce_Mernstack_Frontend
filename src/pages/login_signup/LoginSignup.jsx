@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Link, useLoaderData, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useLoginUserMutation, useRegisterUserMutation } from '../../redux/Api/userApi'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { logInUser } from '../../redux/reducers/userReducer';
+import { logInUser, logOutUser } from '../../redux/reducers/userReducer';
 import { fetchCartItems, fetchItems, resetCart } from '../../redux/reducers/cartReducer';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
@@ -14,7 +14,7 @@ const LoginSignup = () => {
 
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-  const {isLoading} = useSelector((state)=>state.userReducer);
+  const {isLoggedInUser} = useSelector((state)=>state.userReducer);
 
   const [accountState, setAccountState] = useState("Login")
   const [button, setButton] = useState(false)
@@ -33,16 +33,17 @@ const LoginSignup = () => {
 
   useEffect(() => {
 
-    if (isLoading) Navigate('/', { replace: true });
+    if (isLoggedInUser) Navigate('/', { replace: true });
+
+      dispatch(logOutUser(null))
     
       dispatch(resetCart());
 
+      dispatch(fetchCartItems([]))
+
       localStorage.clear()
 
-    
-
-
-  }, [isLoading])
+  }, [isLoggedInUser])
 
 
   const submitHandler = async (e) => {
