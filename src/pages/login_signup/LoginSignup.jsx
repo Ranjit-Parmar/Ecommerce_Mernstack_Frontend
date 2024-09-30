@@ -35,13 +35,13 @@ const LoginSignup = () => {
 
     if (isLoggedInUser) Navigate('/', { replace: true });
 
-      dispatch(logOutUser(null))
+      // dispatch(logOutUser(null))
     
-      dispatch(resetCart());
+      // dispatch(resetCart());
 
-      dispatch(fetchCartItems([]))
+      // dispatch(fetchCartItems([]))
 
-      localStorage.clear()
+      // localStorage.clear()
 
   }, [isLoggedInUser])
 
