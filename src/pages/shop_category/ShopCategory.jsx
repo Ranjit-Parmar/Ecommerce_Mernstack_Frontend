@@ -19,9 +19,6 @@ import kid_jeans from '../../assets/Kids-Jeans.jpg';
 import men_shorts from '../../assets/Shorts.jpg';
 import women_shorts from '../../assets/women-shorts.jpg';
 import kid_shorts from '../../assets/kids-shorts.jpg';
-import men_winter_wear from '../../assets/men-winter-wear.jpg';
-import women_winter_wear from '../../assets/women-winter-wear.jpg';
-import kid_winter_wear from '../../assets/kids-winter-wear.jpg';
 import men_sports_wear from '../../assets/Men-Sports-Wear.jpg';
 import women_sports_wear from '../../assets/Women-Sports-Wear.jpg';
 import kid_sports_wear from '../../assets/kids-sports-wear.jpg';
@@ -60,16 +57,7 @@ const dummyData = [
     img1 : men_shorts,
     img2 : women_shorts,
     img3 : kid_shorts,
-    name : "Shorts",
-    discount : "10 to 20% OFF",
-    task : "shop now"
-  },
-  {
-    id : 5,
-    img1 : men_winter_wear,
-    img2 : women_winter_wear,
-    img3 : kid_winter_wear,
-    name : "Winter wear",
+    name : "Bottom wear",
     discount : "10 to 20% OFF",
     task : "shop now"
   },

@@ -157,7 +157,9 @@ const ProductList = () => {
                                     <li className='p-3 flex justify-start
                              items-center gap-3'><label htmlFor="tshirt" className='h-full'><input type="checkbox" id='tshirt' value='tshirt' onClick={(e) => { categoryHandler(e) }} className='mr-4' />T-Shirts</label></li>
                                     <li className='p-3 flex justify-start
-                             items-center gap-3'><label htmlFor="trousers" className='h-full'><input type="checkbox" id='trousers' value='trouser' onClick={(e) => { categoryHandler(e) }} className='mr-4' />Trousers</label></li>
+                             items-center gap-3'><label htmlFor="trousers" className='h-full'><input type="checkbox" id='bottomwear' value='bottomwear' onClick={(e) => { categoryHandler(e) }} className='mr-4' />Bottom wear</label></li>
+                                    <li className='p-3 flex justify-start
+                             items-center gap-3'><label htmlFor="trousers" className='h-full'><input type="checkbox" id='topwear' value='topwear' onClick={(e) => { categoryHandler(e) }} className='mr-4' />Topwear</label></li>
                                 </ul>
                             </div>
                             <hr />
