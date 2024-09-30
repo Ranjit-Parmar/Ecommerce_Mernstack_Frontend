@@ -12,7 +12,7 @@ import women_tshirt from '../../assets/exclusive_image.png';
 import kid_tshirt from '../../assets/clothing8.jpg';
 import men_shirt from '../../assets/clothing5.jpg';
 import women_shirt from '../../assets/women-shirts.jpg';
-import kid_shirt from '../../assets/kids-shirts.jpg';
+import kid_shirt from '../../assets/product_31.png';
 import men_jeans from '../../assets/clothing4.jpg';
 import women_jeans from '../../assets/women-jeans.jpg';
 import kid_jeans from '../../assets/Kids-Jeans.jpg';
