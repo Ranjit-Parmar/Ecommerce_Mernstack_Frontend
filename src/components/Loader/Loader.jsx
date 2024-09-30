@@ -3,7 +3,7 @@ import { FadeLoader } from 'react-spinners'
 
 const Loader = () => {
   return (
-    <div className='border-black border-2'>
+    <div className='h-full border-black border-2'>
       <FadeLoader size={23} color={'#fa7e0a'} />
     </div>  
   )
