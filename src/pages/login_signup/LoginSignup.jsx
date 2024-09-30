@@ -17,7 +17,7 @@ const LoginSignup = () => {
 
   const [accountState, setAccountState] = useState("Login")
   const [button, setButton] = useState(false)
-  const { isLoggedInUser } = useSelector((state) => state.userReducer);
+  const { isLoggedInUser, isLoading } = useSelector((state) => state.userReducer);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,7 +33,7 @@ const LoginSignup = () => {
 
   useEffect(() => {
 
-    if (isLoggedInUser) Navigate('/', { replace: true });
+    if (!isLoading && isLoggedInUser) Navigate('/', { replace: true });
     
       dispatch(resetCart());
 
@@ -41,7 +41,7 @@ const LoginSignup = () => {
     
 
 
-  }, [accountState, isLoggedInUser])
+  }, [accountState, isLoggedInUser, isLoading])
 
 
   const submitHandler = async (e) => {
