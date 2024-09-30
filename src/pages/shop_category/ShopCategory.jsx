@@ -41,8 +41,7 @@ const dummyData = [
     id : 2,
     img1 : men_shirt,
     img2 : women_shirt,
-    img2 : kid_shirt,
-    img3 : '../../assets/kids-shirts.jpg',
+    img3 : kid_shirt,
     name : "Shirts",
     discount : "50 to 90% OFF",
     task : "shop now"
@@ -58,8 +57,7 @@ const dummyData = [
   },
   {
     id : 4,
-    img1 : '../../assets/Shorts.jpg',
-    img2 : men_shorts,
+    img1 : men_shorts,
     img2 : women_shorts,
     img3 : kid_shorts,
     name : "Shorts",
