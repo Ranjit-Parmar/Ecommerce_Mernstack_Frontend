@@ -133,11 +133,9 @@ const router = createBrowserRouter([
     element: (
       <>
         <Toaster/>
-        <ProtectedRoute>
         <Suspense fallback={<Spinner/>}>
         <LoginSignup />
         </Suspense>
-        </ProtectedRoute>
       </>
     )
   },
