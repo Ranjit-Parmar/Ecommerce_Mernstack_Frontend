@@ -29,13 +29,13 @@ const EditProfile = () => {
     const [userPhoto, setUserPhoto] = useState(photo);
 
     useEffect(() => {
-        if (data) {
+        if (user) {
             setUserName(user.name);
             setUserEmail(user.email);
             setUserRole(user.role);
             setUserPhoto(user.photo?.map((val) => val.url));
         }
-    }, [data])
+    }, [user])
 
     
 
