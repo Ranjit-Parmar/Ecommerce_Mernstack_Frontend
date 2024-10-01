@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { FiUpload } from 'react-icons/fi'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useLoadUserQuery, useUpdateUserMutation } from '../../redux/Api/userApi'
 import { useSelector } from 'react-redux'
 import toast from 'react-hot-toast'
 import { RxCross1 } from 'react-icons/rx'
-import axios from 'axios'
 import { Helmet } from 'react-helmet-async'
 import Loader from '../Loader/Loader'
 
@@ -82,6 +81,12 @@ const EditProfile = () => {
         }
     }
 
+    const removePreviewImage = (item) => {
+        setUserPhoto(userPhoto.filter((val) => {
+            return val !== item
+        }))
+    }
+
     
 
 
@@ -108,7 +113,8 @@ const EditProfile = () => {
                             <input type="file" name="photo" id="file-upload" className='hidden' onChange={imageChangeHandler} />
                         </div>
                     </div>
-                    {userPhoto?.length > 0 ? <div className='h-52 w-44 hover:scale-105 duration-200 mt-6 mx-auto'>
+                    {userPhoto?.length > 0 ? <div className='relative h-52 w-44 hover:scale-105 duration-200 mt-6 mx-auto'>
+                            <RxCross1 className='absolute right-0 hover:text-white hover:bg-red-500' onClick={() => { removePreviewImage(val) }} />
                             <img src={userPhoto} alt="" className='h-full w-full' />
                         </div>
                     : ""}
