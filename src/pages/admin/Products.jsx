@@ -101,7 +101,7 @@ const Products = () => {
                         </tr>
                     </thead>
 
-                    {data?.allProducts?.map((val, i) => <tbody key={i} className="bg-white">
+                    {data?.Products?.map((val, i) => <tbody key={i} className="bg-white">
                                 <tr>
                                     <td className="px-4 py-2">
                                         <div className=" rounded-full  w-10 h-10 mr-2 md:block bg-gray-50" >
