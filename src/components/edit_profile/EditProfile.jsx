@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { useLoadUserQuery, useUpdateUserMutation } from '../../redux/Api/userApi'
 import { useSelector } from 'react-redux'
 import toast from 'react-hot-toast'
-import { RxCross1 } from 'react-icons/rx'
 import { Helmet } from 'react-helmet-async'
 import Loader from '../Loader/Loader'
 
@@ -12,11 +11,11 @@ const EditProfile = () => {
     const Navigate = useNavigate()
 
     const [updateUser] = useUpdateUserMutation();
-    const { user, isLoading } = useSelector((state) => state.userReducer);
-    // const { data, isLoading, isError } = useLoadUserQuery();
+    const { user } = useSelector((state) => state.userReducer);
+    const { data, isLoading, isError } = useLoadUserQuery();
 
 
-    const { name, email, role, photo } = user || {
+    const { name, email, role, photo } = data?.activeUser || {
         name: '',
         email: '',
         role: '',
@@ -29,13 +28,13 @@ const EditProfile = () => {
     const [userPhoto, setUserPhoto] = useState(photo);
 
     useEffect(() => {
-        if (user) {
-            setUserName(user.name);
-            setUserEmail(user.email);
-            setUserRole(user.role);
-            setUserPhoto(user.photo?.map((val) => val.url));
+        if (data) {
+            setUserName(data?.activeUser?.name);
+            setUserEmail(data?.activeUser?.email);
+            setUserRole(data?.activeUser?.role);
+            setUserPhoto(data?.activeUser?.photo?.map((val) => val.url));
         }
-    })
+    }, [data])
 
     
 
@@ -78,11 +77,6 @@ const EditProfile = () => {
         }
     }
 
-    const removePreviewImage = (item) => {
-        setUserPhoto(userPhoto.filter((val) => val === item))
-        setUserPhoto('')
-    }
-
     
 
 
@@ -109,8 +103,7 @@ const EditProfile = () => {
                             <input type="file" name="photo" id="file-upload" className='hidden' onChange={imageChangeHandler} />
                         </div>
                     </div>
-                    {userPhoto?.length > 0 ? <div className='relative h-52 w-44 hover:scale-105 duration-200 mt-6 mx-auto'>
-                            <RxCross1 className='absolute right-0 hover:text-white hover:bg-red-500' onClick={() => { removePreviewImage(userPhoto) }} />
+                    {userPhoto?.length > 0 ? <div className='h-52 w-44 hover:scale-105 duration-200 mt-6 mx-auto'>
                             <img src={userPhoto} alt="" className='h-full w-full' />
                         </div>
                     : ""}
