@@ -79,7 +79,7 @@ const EditProfile = () => {
     }
 
     const removePreviewImage = (item) => {
-        setUserPhoto(userPhoto.filter((val) => val !== item))
+        setUserPhoto(userPhoto.filter((val) => val === item))
     }
 
     
