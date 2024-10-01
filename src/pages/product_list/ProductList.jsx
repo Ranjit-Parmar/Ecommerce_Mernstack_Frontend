@@ -123,7 +123,7 @@ const ProductList = () => {
             <div className='m-2 lg:m-6'>
                 <div className='w-full bg-white'>
                     <div className='h-28  flex justify-start items-start '>
-                        <Breadcrum gender={query}/>
+                        <Breadcrum gender={query?.state?.gender}/>
                     </div>
                     <hr />
                     <div className=' flex lg:flex-row flex-col-reverse justify-start '>
