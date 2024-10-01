@@ -12,11 +12,11 @@ const EditProfile = () => {
     const Navigate = useNavigate()
 
     const [updateUser] = useUpdateUserMutation();
-    const { user } = useSelector((state) => state.userReducer);
-    const { data, isLoading, isError } = useLoadUserQuery();
+    const { user, isLoading } = useSelector((state) => state.userReducer);
+    // const { data, isLoading, isError } = useLoadUserQuery();
 
 
-    const { name, email, role, photo } = data?.activeUser || {
+    const { name, email, role, photo } = user || {
         name: '',
         email: '',
         role: '',
@@ -30,10 +30,10 @@ const EditProfile = () => {
 
     useEffect(() => {
         if (data) {
-            setUserName(data?.activeUser?.name);
-            setUserEmail(data?.activeUser?.email);
-            setUserRole(data?.activeUser?.role);
-            setUserPhoto(data?.activeUser?.photo?.map((val) => val.url));
+            setUserName(user.name);
+            setUserEmail(user.email);
+            setUserRole(user.role);
+            setUserPhoto(user.photo?.map((val) => val.url));
         }
     }, [data])
 
