@@ -64,7 +64,7 @@ const EditProfile = () => {
         formData.append('email', userEmail);
         formData.append('password', userPassword);
         formData.append('role', userRole);
-        formData.append('photo', userPhoto);
+        formData.append('photo', userPhoto.length >= 0? userPhoto: '');
 
         const res = await updateUser({ id: user?._id, updateUserData: formData });
         if (res.data.success) {
