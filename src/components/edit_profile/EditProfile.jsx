@@ -16,14 +16,12 @@ const EditProfile = () => {
     const { data, isLoading, isError } = useLoadUserQuery();
 
 
-    const { id, name, email, role, photo } = data?.activeUser || {
-        id: '',
+    const { name, email, role, photo } = data?.activeUser || {
         name: '',
         email: '',
         role: '',
         photo: []
     }
-    const [userId, setUserId] = useState(id);
     const [userName, setUserName] = useState(name);
     const [userEmail, setUserEmail] = useState(email);
     const [userPassword, setUserPassword] = useState('');
@@ -32,7 +30,6 @@ const EditProfile = () => {
 
     useEffect(() => {
         if (data) {
-            setUserId(data?.activeUser?._id);
             setUserName(data?.activeUser?.name);
             setUserEmail(data?.activeUser?.email);
             setUserRole(data?.activeUser?.role);
@@ -82,9 +79,7 @@ const EditProfile = () => {
     }
 
     const removePreviewImage = (item) => {
-        setUserPhoto(userPhoto.filter((val) => {
-            return val !== item
-        }))
+        setUserPhoto(userPhoto.filter((val) => val !== item))
     }
 
     
@@ -114,7 +109,7 @@ const EditProfile = () => {
                         </div>
                     </div>
                     {userPhoto?.length > 0 ? <div className='relative h-52 w-44 hover:scale-105 duration-200 mt-6 mx-auto'>
-                            <RxCross1 className='absolute right-0 hover:text-white hover:bg-red-500' onClick={() => { removePreviewImage(val) }} />
+                            <RxCross1 className='absolute right-0 hover:text-white hover:bg-red-500' onClick={() => { removePreviewImage(userPhoto) }} />
                             <img src={userPhoto} alt="" className='h-full w-full' />
                         </div>
                     : ""}
