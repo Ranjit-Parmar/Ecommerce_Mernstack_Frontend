@@ -64,7 +64,7 @@ const EditProfile = () => {
         formData.append('email', userEmail);
         formData.append('password', userPassword);
         formData.append('role', userRole);
-        formData.append('photo', userPhoto.length >= 0? userPhoto: '');
+        formData.append('photo', userPhoto);
 
         const res = await updateUser({ id: user?._id, updateUserData: formData });
         if (res.data.success) {
@@ -80,6 +80,7 @@ const EditProfile = () => {
 
     const removePreviewImage = (item) => {
         setUserPhoto(userPhoto.filter((val) => val === item))
+        setUserPhoto('')
     }
 
     
