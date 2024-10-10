@@ -11,6 +11,7 @@ import { useMyCartItemsQuery, useUpdateCartItemsMutation } from '../../redux/Api
 import toast from 'react-hot-toast'
 import { ShopContext } from '../../context/ShopContext.jsx'
 import { Helmet } from 'react-helmet-async'
+import Loader from '../../components/Loader/Loader.jsx'
 
 
 
@@ -78,7 +79,7 @@ const Cart = () => {
       if(cartItems.quantity >= cartItems.product.size[cartItems.selectedSize]) return;
        await updateCartItems({id:cartItems._id,quantity:cartItems.quantity + 1})
   
-      // dispatch(fetchCartItems(data?.cartItem));
+      dispatch(fetchCartItems(data?.cartItem));
     
   }
   
@@ -87,7 +88,7 @@ const Cart = () => {
     if(cartItems.quantity <= 1) return 1;
      await updateCartItems({id:cartItems._id,quantity:cartItems.quantity - 1})
     
-    //  dispatch(fetchCartItems(data?.cartItem));
+     dispatch(fetchCartItems(data?.cartItem));
   }
   
   
@@ -120,7 +121,7 @@ const Cart = () => {
   },[cartItems])
   
   return (
-    isLoading?"Loading...":<>
+    isLoading?<Loader/>:<>
     <Helmet title='Cart- Mern-Ecommerce-App'/>
     {cartItems.length == 0? <div className="m-auto text-center p-10 h-1/2 flex flex-col justify-between items-center gap-1 lg:gap-3 ">
       <FaExclamation className="text-red-500 lg:text-4xl"/>
