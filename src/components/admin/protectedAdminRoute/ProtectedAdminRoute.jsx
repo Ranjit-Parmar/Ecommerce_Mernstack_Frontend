@@ -17,8 +17,6 @@ const ProtectedAdminRoute = ({children}) => {
         if(data?.activeUser){    
             dispatch(logInUser(data?.activeUser))
         }
-        dispatch(logOutUser());
-        toast.error("please login again")
         return <Navigate to="/login" replace={true}/>
     
       },[data?.activeUser])
