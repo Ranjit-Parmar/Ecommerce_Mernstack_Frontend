@@ -78,7 +78,7 @@ const Cart = () => {
       if(cartItems.quantity >= cartItems.product.size[cartItems.selectedSize]) return;
        await updateCartItems({id:cartItems._id,quantity:cartItems.quantity + 1})
   
-      dispatch(fetchCartItems(data?.cartItem));
+      // dispatch(fetchCartItems(data?.cartItem));
     
   }
   
@@ -87,7 +87,7 @@ const Cart = () => {
     if(cartItems.quantity <= 1) return 1;
      await updateCartItems({id:cartItems._id,quantity:cartItems.quantity - 1})
     
-     dispatch(fetchCartItems(data?.cartItem));
+    //  dispatch(fetchCartItems(data?.cartItem));
   }
   
   
