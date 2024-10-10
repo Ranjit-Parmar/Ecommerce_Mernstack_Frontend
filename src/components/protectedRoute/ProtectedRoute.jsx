@@ -10,7 +10,6 @@ import { useLoadUserQuery } from '../../redux/Api/userApi';
 
 const ProtectedRoute = ({ children }) => { 
 
-  const {isLoggedInUser} = useSelector((state)=>state.userReducer);
   const {data, isLoading, isError} = useMyCartItemsQuery();
   const {data : loadUserData, isLoading : loadUserIsLoading, isError : loadUserIsError} = useLoadUserQuery();
   const dispatch = useDispatch();
@@ -23,8 +22,7 @@ const ProtectedRoute = ({ children }) => {
       dispatch(logInUser(loadUserData?.activeUser))
       dispatch(fetchCartItems(data?.cartItem))
     }
-    dispatch(logOutUser());
-    toast.error("please login again")
+    
     return <Navigate to="/login" replace={true}/>
     
 
