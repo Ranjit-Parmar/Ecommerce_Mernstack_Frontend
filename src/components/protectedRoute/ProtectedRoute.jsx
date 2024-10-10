@@ -5,20 +5,22 @@ import { logInUser, logOutUser } from '../../redux/reducers/userReducer';
 import { useEffect } from 'react';
 import { useMyCartItemsQuery } from '../../redux/Api/cartApi';
 import toast from "react-hot-toast";
+import { useLoadUserQuery } from '../../redux/Api/userApi';
 
 
 const ProtectedRoute = ({ children }) => { 
 
   const {isLoggedInUser} = useSelector((state)=>state.userReducer);
   const {data, isLoading, isError} = useMyCartItemsQuery();
+  const {data : loadUserData, isLoading : loadUserIsLoading, isError : loadUserIsError} = useLoadUserQuery();
   const dispatch = useDispatch();
-  const userdata = useLoaderData();
+  // const userdata = useLoaderData();
 
   
   useEffect(()=>{
     
-    if(userdata){
-      dispatch(logInUser(userdata))
+    if(loadUserData?.activeUser){
+      dispatch(logInUser(loadUserData?.activeUser))
       dispatch(fetchCartItems(data?.cartItem))
     }
     dispatch(logOutUser());
@@ -26,9 +28,9 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/login" replace={true}/>
     
 
-  },[userdata,dispatch,children,isLoggedInUser,data])
+  },[loadUserData, data, loadUserIsLoading, dispatch, children])
 
-  if(userdata || isLoggedInUser){
+  if(loadUserData?.activeUser || isLoggedInUser){
     return children;
   }else{
      <Navigate to={'/login'} replace={true}/>
