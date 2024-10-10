@@ -51,8 +51,7 @@ const router = createBrowserRouter([
     path: "/",
      loader: async () => {
       try{
-      let userData = await loadUser()
-      return userData || null
+      return await loadUser() || null
       }catch(err){
         return err;
       }
