@@ -4,14 +4,13 @@ import {LiaExchangeAltSolid} from 'react-icons/lia'
 import {FaExclamation, FaHandHoldingHeart} from 'react-icons/fa'
 import {FcApproval} from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux'
-import { calculatePrice, fetchCartItems, fetchItems } from '../../redux/reducers/cartReducer'
+import { calculatePrice } from '../../redux/reducers/cartReducer'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import { useMyCartItemsQuery, useUpdateCartItemsMutation } from '../../redux/Api/cartApi.js'
+import { useUpdateCartItemsMutation } from '../../redux/Api/cartApi.js'
 import toast from 'react-hot-toast'
 import { ShopContext } from '../../context/ShopContext.jsx'
 import { Helmet } from 'react-helmet-async'
-import Loader from '../../components/Loader/Loader.jsx'
 
 
 
@@ -25,11 +24,10 @@ const Cart = () => {
   const dispatch = useDispatch();
   
  
- const {cartItems, subtotal, discount, shippingCharge, tax, total} = useSelector((state)=>state.cartReducer)
+ const {cartItems, isLoading, subtotal, discount, shippingCharge, tax, total} = useSelector((state)=>state.cartReducer)
 
  
  const [updateCartItems] = useUpdateCartItemsMutation();
- const {data, isLoading, isError} = useMyCartItemsQuery();
  
   const Navigate = useNavigate(); 
   
@@ -79,7 +77,7 @@ const Cart = () => {
       if(cartItems.quantity >= cartItems.product.size[cartItems.selectedSize]) return;
        await updateCartItems({id:cartItems._id,quantity:cartItems.quantity + 1})
   
-      dispatch(fetchCartItems(data?.cartItem));
+      await loadCartfunc();
     
   }
   
@@ -88,7 +86,7 @@ const Cart = () => {
     if(cartItems.quantity <= 1) return 1;
      await updateCartItems({id:cartItems._id,quantity:cartItems.quantity - 1})
     
-     dispatch(fetchCartItems(data?.cartItem));
+    await loadCartfunc();
   }
   
   
@@ -109,7 +107,7 @@ const Cart = () => {
       toast.error('something went wrong')
     }
 
-    dispatch(fetchCartItems(data?.cartItem));
+    await loadCartfunc();
     
   }
   
@@ -121,7 +119,7 @@ const Cart = () => {
   },[cartItems])
   
   return (
-    isLoading?<Loader/>:<>
+    isLoading?"Loading...":<>
     <Helmet title='Cart- Mern-Ecommerce-App'/>
     {cartItems.length == 0? <div className="m-auto text-center p-10 h-1/2 flex flex-col justify-between items-center gap-1 lg:gap-3 ">
       <FaExclamation className="text-red-500 lg:text-4xl"/>

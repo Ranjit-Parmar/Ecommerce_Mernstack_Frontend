@@ -9,23 +9,27 @@ import toast from "react-hot-toast";
 const ProtectedAdminRoute = ({children}) => {
 
     const {user, isLoggedInUser} = useSelector((state)=>state.userReducer);
-    const {data, isLoading, isError} = useLoadUserQuery();
     const dispatch = useDispatch();
+    const data = useLoaderData();
     
     useEffect(()=>{
     
-        if(data?.activeUser){    
-            dispatch(logInUser(data?.activeUser))
+        if(data.status === 401){
+
+            dispatch(logOutUser());
+            toast.error("please login again")
+            return <Navigate to="/login" replace={true}/>
+
         }
-        return <Navigate to="/login" replace={true}/>
+          dispatch(logInUser(data))
     
-      },[data?.activeUser])
+      },[data])
     
-    if(!data?.activeUser){
+    if(!data){
         
         return <Navigate to={'/login'} replace={true}/>
     }
-    if(data?.activeUser && data?.activeUser?.role === 'user'){
+    if(data && data?.role === 'user'){
         return <Navigate to={'/'} replace={true}/>
     }
     return children;

@@ -41,7 +41,7 @@ import ShopContextProvider from './context/ShopContext.jsx'
 import { Provider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { loadUser } from './redux/reducers/userReducer.js';
-import { getStripeKey } from './redux/reducers/cartReducer.js';
+import { fetchItems, getStripeKey } from './redux/reducers/cartReducer.js';
 import Spinner from './components/Spinner/Spinner.jsx';
 
 
@@ -49,6 +49,16 @@ import Spinner from './components/Spinner/Spinner.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
+     loader: async () => {
+      try{
+      let userData = await loadUser()
+      let cartData = await fetchItems()
+      return [userData, cartData] || null
+      }catch(err){
+        return err;
+      }
+      
+    },
     element: <>
         <Toaster />
         <ProtectedRoute>
