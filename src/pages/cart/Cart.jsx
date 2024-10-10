@@ -4,7 +4,7 @@ import {LiaExchangeAltSolid} from 'react-icons/lia'
 import {FaExclamation, FaHandHoldingHeart} from 'react-icons/fa'
 import {FcApproval} from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux'
-import { calculatePrice } from '../../redux/reducers/cartReducer'
+import { calculatePrice, fetchItems } from '../../redux/reducers/cartReducer'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { useUpdateCartItemsMutation } from '../../redux/Api/cartApi.js'
@@ -77,7 +77,7 @@ const Cart = () => {
       if(cartItems.quantity >= cartItems.product.size[cartItems.selectedSize]) return;
        await updateCartItems({id:cartItems._id,quantity:cartItems.quantity + 1})
   
-      await loadCartfunc();
+      await fetchItems();
     
   }
   
@@ -86,7 +86,7 @@ const Cart = () => {
     if(cartItems.quantity <= 1) return 1;
      await updateCartItems({id:cartItems._id,quantity:cartItems.quantity - 1})
     
-    await loadCartfunc();
+    await fetchItems();
   }
   
   
@@ -107,7 +107,7 @@ const Cart = () => {
       toast.error('something went wrong')
     }
 
-    await loadCartfunc();
+    await fetchItems();
     
   }
   
