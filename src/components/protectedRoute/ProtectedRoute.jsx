@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logInUser, logOutUser } from '../../redux/reducers/userReducer';
 import { useEffect } from 'react';
 import { useMyCartItemsQuery } from '../../redux/Api/cartApi';
+import toast from "react-hot-toast";
 
 
 const ProtectedRoute = ({ children }) => { 
