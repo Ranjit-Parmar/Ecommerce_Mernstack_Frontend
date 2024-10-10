@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { RxCross1 } from 'react-icons/rx'
-import { addToCart } from '../../redux/reducers/cartReducer'
-import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
 
 
 const CartItems = ({cartItems,incrementHandler,decrementHandler,removeHandler}) => {
@@ -27,7 +24,7 @@ const CartItems = ({cartItems,incrementHandler,decrementHandler,removeHandler}) 
               <span className='border-gray-400 border-2 w-8'>{cartItems.quantity}</span> 
               <button className='text-2xl bg-orange-500 w-8 hover:bg-orange-700' onClick={()=>{incrementHandler(cartItems)}}>+</button>
             </div>
-            <img src="../../src/assets/cart_cross_icon.png" alt="" className='w-[15px] my-0 mx-10 cursor-pointer' onClick={()=>{removeHandler(cartItems)}}/>
+            <div className='w-[15px] my-0 mx-10 cursor-pointer' onClick={()=>{removeHandler(cartItems)}}><RxCross1/></div>
           </div>
           <hr />
         </div>
