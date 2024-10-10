@@ -30,12 +30,10 @@ const ProtectedRoute = ({ children }) => {
 
   },[loadUserData, data, loadUserIsLoading, dispatch, children])
 
-  if(loadUserData?.activeUser || isLoggedInUser){
+  if(loadUserData?.activeUser){
     return children;
-  }else{
-     <Navigate to={'/login'} replace={true}/>
   }
-
+    return <Navigate to={'/login'} replace={true}/>
 
 }
 
