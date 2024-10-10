@@ -13,6 +13,8 @@ const ProtectedRoute = ({ children }) => {
   const dispatch = useDispatch();
   const userdata = useLoaderData();
 
+  console.log(userdata);
+  
   
   useEffect(()=>{
     
