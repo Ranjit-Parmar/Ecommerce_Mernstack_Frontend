@@ -20,10 +20,11 @@ const ProtectedRoute = ({ children }) => {
     if(userdata[0]){
       dispatch(logInUser(userdata[0]))
       dispatch(fetchCartItems(userdata[1]))
+    }else{
+      dispatch(logOutUser());
+      toast.error("please login again")
+      return <Navigate to="/login" replace={true}/>
     }
-    dispatch(logOutUser());
-    toast.error("please login again")
-    return <Navigate to="/login" replace={true}/>
     
   },[userdata,dispatch,children,isLoggedInUser])
 
