@@ -29,7 +29,7 @@ const ProtectedRoute = ({ children }) => {
   if(isLoading) {
     <Loader/>;
   }
- if(user || isLoggedInUser){
+ if(data?.activeUser){
     return children;
   }
   return <Navigate to={'/login'} replace={true}/>

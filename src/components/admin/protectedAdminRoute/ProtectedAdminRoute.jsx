@@ -23,10 +23,10 @@ const ProtectedAdminRoute = ({children}) => {
     if(isLoading) {
        <Loader/>;
     }
-    if(!user){
+    if(!data?.activeUser){
         return <Navigate to={'/login'} replace={true}/>
     }
-    if(user && user?.role === 'user'){
+    if(data?.activeUser && data?.activeUser?.role === 'user'){
         return <Navigate to={'/'} replace={true}/>
     }
         return children;
