@@ -2,16 +2,23 @@ import { Navigate, useLoaderData } from 'react-router-dom';
 import { fetchCartItems } from '../../redux/reducers/cartReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { logInUser, logOutUser } from '../../redux/reducers/userReducer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useMyCartItemsQuery } from '../../redux/Api/cartApi';
 
 
 const ProtectedRoute = ({ children }) => { 
 
   const {data, isLoading, isError} = useMyCartItemsQuery();
+  const [cartData, setCartData] = useState([]);
   const {isLoggedInUser} = useSelector((state)=>state.userReducer);
   const dispatch = useDispatch();
   const userdata = useLoaderData();
+
+  useEffect(()=>{
+    if(data){
+      setCartData(data?.cartItem)
+    }
+  },[userdata])
 
   
   useEffect(()=>{
@@ -21,10 +28,10 @@ const ProtectedRoute = ({ children }) => {
         toast.error("please login again")
         return <Navigate to="/login" replace={true}/>
     }
-    if(data?.cartItem){
+    
       dispatch(logInUser(userdata))
-      dispatch(fetchCartItems(data?.cartItem))
-    }
+      dispatch(fetchCartItems(cartData))
+    
 
   },[userdata,dispatch,children,isLoggedInUser])
 
