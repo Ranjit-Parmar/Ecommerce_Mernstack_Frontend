@@ -5,6 +5,7 @@ import { useMyCartItemsQuery } from '../../redux/Api/cartApi';
 import { useEffect } from 'react';
 import { logInUser } from '../../redux/reducers/userReducer';
 import { fetchCartItems } from '../../redux/reducers/cartReducer';
+import Loader from '../Loader/Loader';
 
 
 const ProtectedRoute = ({ children }) => { 
@@ -18,6 +19,7 @@ const ProtectedRoute = ({ children }) => {
     useEffect(()=>{
 
       
+      
         if(data){
             dispatch(logInUser(data?.activeUser));
             dispatch(fetchCartItems(cartData?.cartItem));
@@ -27,7 +29,7 @@ const ProtectedRoute = ({ children }) => {
     
 
   if(isLoading) {
-   return 'Loading...';
+    <Loader/>;
   }else if(user || isLoggedInUser){
     return children;
   }else{

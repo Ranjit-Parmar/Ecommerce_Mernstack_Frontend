@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom"
 import { useLoadUserQuery } from "../../../redux/Api/userApi";
 import { useEffect } from "react";
 import { logInUser } from "../../../redux/reducers/userReducer";
+import Loader from "../../Loader/Loader";
 
   
 const ProtectedAdminRoute = ({children}) => {
@@ -21,7 +22,7 @@ const ProtectedAdminRoute = ({children}) => {
     },[data, dispatch, children])
     
     if(isLoading) {
-       return 'Loading...';
+       <Loader/>;
     }else if(!user){
         return <Navigate to={'/login'} replace={true}/>
     }else if(user && user?.role === 'user'){
