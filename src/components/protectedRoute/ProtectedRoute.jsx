@@ -17,11 +17,6 @@ const ProtectedRoute = ({ children }) => {
  
 
     useEffect(()=>{
-
-
-      if(isLoading){
-        return <Loader/>
-      }
       
         if(data){
             dispatch(logInUser(data?.activeUser));

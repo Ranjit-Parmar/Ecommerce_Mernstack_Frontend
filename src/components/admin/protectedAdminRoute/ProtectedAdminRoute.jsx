@@ -13,9 +13,6 @@ const ProtectedAdminRoute = ({children}) => {
     const {data, isLoading, isError} = useLoadUserQuery();
 
     useEffect(()=>{
-        if(isLoading){
-            return <Loader/>
-          }
         
         if(data){
             dispatch(logInUser(data?.activeUser));
