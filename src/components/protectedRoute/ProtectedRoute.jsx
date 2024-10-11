@@ -22,7 +22,7 @@ const ProtectedRoute = ({ children }) => {
         return <Navigate to="/login" replace={true}/>
     }
       dispatch(logInUser(userdata[0]))
-      dispatch(fetchCartItems(userdata[1]?.cartItem))
+      dispatch(fetchCartItems(userdata[1]))
     
   },[userdata,dispatch,children,isLoggedInUser])
 
