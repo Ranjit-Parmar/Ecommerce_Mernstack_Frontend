@@ -11,6 +11,7 @@ import { useUpdateCartItemsMutation } from '../../redux/Api/cartApi.js'
 import toast from 'react-hot-toast'
 import { ShopContext } from '../../context/ShopContext.jsx'
 import { Helmet } from 'react-helmet-async'
+import Loader from '../../components/Loader/Loader.jsx'
 
 
 
@@ -99,8 +100,8 @@ const Cart = () => {
     }
 
     const {data} = await axios(option);
-    if(data.success){
-      toast.success(data.message)
+    if(data?.success){
+      toast.success(data?.message)
     }else{
       toast.error('something went wrong')
     }
@@ -116,7 +117,7 @@ const Cart = () => {
   },[cartItems])
   
   return (
-    isLoading?"Loading...":<>
+    isLoading?<Loader/>:<>
     <Helmet title='Cart- Mern-Ecommerce-App'/>
     {cartItems.length == 0? <div className="m-auto text-center p-10 h-1/2 flex flex-col justify-between items-center gap-1 lg:gap-3 ">
       <FaExclamation className="text-red-500 lg:text-4xl"/>
