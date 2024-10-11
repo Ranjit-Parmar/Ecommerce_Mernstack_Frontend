@@ -10,31 +10,15 @@ import Loader from '../Loader/Loader';
 
 const ProtectedRoute = ({ children }) => { 
 
-  const dispatch = useDispatch();
-  const {isLoggedInUser, user} = useSelector((state)=>state.userReducer);
-  const {data, isLoading, isError} = useLoadUserQuery();
-  const {data : cartData, isLoading : cartIsLoading, isError : cartIsError} = useMyCartItemsQuery(); 
- 
+  const {user, isLoggedInUser, isLoading} = useSelector((state)=>state.userReducer);
 
-    useEffect(()=>{
-      
-        if(data){
-            dispatch(logInUser(data?.activeUser));
-            dispatch(fetchCartItems(cartData?.cartItem));
-        }
-
-    },[data, dispatch, children])
-    
-
-  if(isLoading) {
-    <Loader/>;
+  if(isLoading){
+    return <Loader/>
   }
- if(data?.activeUser){
-    return children;
+  if(user && isLoggedInUser){
+    return children
   }
-  return <Navigate to={'/login'} replace={true}/>
-  
-
+  return <Navigate to='/login' replace={true}/>
 
 }
 

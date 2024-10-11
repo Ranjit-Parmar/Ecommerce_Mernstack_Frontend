@@ -9,25 +9,18 @@ import Loader from "../../Loader/Loader";
 const ProtectedAdminRoute = ({children}) => {
 
     const dispatch = useDispatch();
-    const {user} = useSelector((state)=>state.userReducer);
-    const {data, isLoading, isError} = useLoadUserQuery();
+    const {user, isLoading} = useSelector((state)=>state.userReducer);
 
-    useEffect(()=>{
-        
-        if(data){
-            dispatch(logInUser(data?.activeUser));
-        }
-
-    },[data, dispatch, children])
+    
     
     if(isLoading) {
        <Loader/>;
     }
-    if(!data?.activeUser){
-        return <Navigate to={'/login'} replace={true}/>
-    }
-    if(data?.activeUser && data?.activeUser?.role === 'user'){
+    if(user && user.role === 'user'){
         return <Navigate to={'/'} replace={true}/>
+    }
+    if(!user){
+        return <Navigate to={'/login'} replace={true}/>
     }
         return children;
 

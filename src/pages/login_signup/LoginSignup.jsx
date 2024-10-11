@@ -81,7 +81,7 @@ const LoginSignup = () => {
         email, password
       });
 
-      if (res.data) {
+      if (res?.data) {
 
         const cartData = await fetchItems();
         dispatch(logInUser(res?.data?.userData));
