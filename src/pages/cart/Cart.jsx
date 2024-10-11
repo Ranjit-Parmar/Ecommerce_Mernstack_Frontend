@@ -4,7 +4,7 @@ import {LiaExchangeAltSolid} from 'react-icons/lia'
 import {FaExclamation, FaHandHoldingHeart} from 'react-icons/fa'
 import {FcApproval} from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux'
-import { calculatePrice } from '../../redux/reducers/cartReducer'
+import { calculatePrice, fetchCartItems } from '../../redux/reducers/cartReducer'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { useUpdateCartItemsMutation } from '../../redux/Api/cartApi.js'
@@ -102,6 +102,7 @@ const Cart = () => {
     const {data} = await axios(option);
     if(data?.success){
       toast.success(data?.message)
+      dispatch(fetchCartItems(cartItems))
     }else{
       toast.error('something went wrong')
     }
