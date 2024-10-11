@@ -52,6 +52,7 @@ const router = createBrowserRouter([
      loader: async () => {
       try{
       let userData = await loadUser()
+      let cartData = await fetchItems()
       return [userData, cartData] || null
       }catch(err){
         return err;
