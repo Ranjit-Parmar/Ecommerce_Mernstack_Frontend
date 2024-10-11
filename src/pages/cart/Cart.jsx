@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { calculatePrice } from '../../redux/reducers/cartReducer'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import { useUpdateCartItemsMutation } from '../../redux/Api/cartApi.js'
+import { useDeleteCartItemsMutation, useUpdateCartItemsMutation } from '../../redux/Api/cartApi.js'
 import toast from 'react-hot-toast'
 import { ShopContext } from '../../context/ShopContext.jsx'
 import { Helmet } from 'react-helmet-async'
@@ -25,8 +25,9 @@ const Cart = () => {
   
  
  const {cartItems, isLoading, subtotal, discount, shippingCharge, tax, total} = useSelector((state)=>state.cartReducer)
-
  
+ 
+ const [deleteCartItems] = useDeleteCartItemsMutation();
  const [updateCartItems] = useUpdateCartItemsMutation();
  
   const Navigate = useNavigate(); 
@@ -77,7 +78,6 @@ const Cart = () => {
       if(cartItems.quantity >= cartItems.product.size[cartItems.selectedSize]) return;
        await updateCartItems({id:cartItems._id,quantity:cartItems.quantity + 1})
   
-      await loadCartfunc();
     
   }
   
@@ -86,28 +86,17 @@ const Cart = () => {
     if(cartItems.quantity <= 1) return 1;
      await updateCartItems({id:cartItems._id,quantity:cartItems.quantity - 1})
     
-    await loadCartfunc();
   }
   
   
   const removeHandler = async(cartItem) => {
-    const option = {
-      url :   `https://shopping-app-2ow9.onrender.com/api/v1/cart/deleteCartItem/${cartItem._id}`,
-      method : 'DELETE',
-      withCredentials : true,
-      headers : {
-        'Content-Type':'application/json'
-      }
-    }
-
-    const {data} = await axios(option);
-    if(data.success){
+    
+    const {data} = await deleteCartItems(cartItem._id);
+    if(data?.success){
       toast.success(data.message)
     }else{
       toast.error('something went wrong')
     }
-
-    await loadCartfunc();
     
   }
   
