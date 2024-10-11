@@ -44,18 +44,6 @@ import { useMyCartItemsQuery } from '../redux/Api/cartApi.js';
 
 const Routes = () => {
 
-    const dispatch = useDispatch();
-    const {data, isLoading, isError} = useLoadUserQuery();
-    const {data : cartData, isLoading : cartIsLoading, isError : cartIsError} = useMyCartItemsQuery(); 
-
-    useEffect(()=>{
-
-        if(data){
-            dispatch(logInUser(data?.activeUser));
-            dispatch(fetchCartItems(cartData?.cartItem));
-        }
-
-    },[data, dispatch])
     
 
     const router = createBrowserRouter([
@@ -143,13 +131,6 @@ const Routes = () => {
         },
         {
           path: "/admin",
-          loader: async () => {
-            try {
-              return await loadUser()
-            } catch (err) {
-              return err;
-            }
-          },
           element: <>
             <Toaster />
             <ProtectedAdminRoute>
