@@ -14,7 +14,7 @@ const LoginSignup = () => {
 
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-  const {isLoading, user} = useSelector((state)=>state.userReducer);
+  const {isLoading} = useSelector((state)=>state.userReducer);
 
   const [accountState, setAccountState] = useState("Login")
   const [button, setButton] = useState(false)
@@ -33,7 +33,7 @@ const LoginSignup = () => {
 
   useEffect(() => {
 
-    if (!isLoading && user) Navigate('/', { replace: true });
+    if (isLoading) Navigate('/', { replace: true });
 
       dispatch(logOutUser(null))
     
@@ -43,7 +43,7 @@ const LoginSignup = () => {
 
       localStorage.clear()
 
-  }, [isLoading,user])
+  }, [isLoading])
 
 
   const submitHandler = async (e) => {

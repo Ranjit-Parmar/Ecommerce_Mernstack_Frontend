@@ -1,5 +1,4 @@
-import React, { lazy, Suspense, useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import React, { lazy, Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // USER ROUTES
@@ -35,20 +34,25 @@ const EditAdminProfile = lazy (()=> import('../components/admin/edit_profile/Edi
 const Add_Edit_Coupon = lazy (()=> import('../components/admin/add_edit_coupon/Add_Edit_Coupon.jsx'))
 const ProtectedAdminRoute = lazy (()=> import('../components/admin/protectedAdminRoute/ProtectedAdminRoute.jsx'))
 import { Toaster } from 'react-hot-toast';
-import { loadUser, logInUser } from '../redux/reducers/userReducer.js';
-import { fetchCartItems, fetchItems, getStripeKey } from '../redux/reducers/cartReducer.js';
+import { loadUser } from '../redux/reducers/userReducer.js';
+import { fetchItems, getStripeKey } from '../redux/reducers/cartReducer.js';
 import Spinner from '../components/Spinner/Spinner.jsx';
-import { useLoadUserQuery } from '../redux/Api/userApi.js';
-import { useMyCartItemsQuery } from '../redux/Api/cartApi.js';
-
 
 const Routes = () => {
-
-
-
+    
     const router = createBrowserRouter([
         {
           path: "/",
+           loader: async () => {
+            try{
+            let userData = await loadUser()
+            let cartData = await fetchItems()
+            return [userData, cartData] || null
+            }catch(err){
+              return err;
+            }
+            
+          },
           element: <>
               <Toaster />
               <ProtectedRoute>
@@ -131,6 +135,13 @@ const Routes = () => {
         },
         {
           path: "/admin",
+          loader: async () => {
+            try {
+              return await loadUser()
+            } catch (err) {
+              return err;
+            }
+          },
           element: <>
             <Toaster />
             <ProtectedAdminRoute>

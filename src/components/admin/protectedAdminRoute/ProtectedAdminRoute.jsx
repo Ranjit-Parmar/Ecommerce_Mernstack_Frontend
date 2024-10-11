@@ -1,36 +1,38 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom"
-import { useLoadUserQuery } from "../../../redux/Api/userApi";
+import { Navigate, useLoaderData } from "react-router-dom"
+import { logInUser, logOutUser } from "../../../redux/reducers/userReducer";
 import { useEffect } from "react";
-import { logInUser } from "../../../redux/reducers/userReducer";
-import Loader from "../../Loader/Loader";
+import toast from "react-hot-toast";
+
 
   
 const ProtectedAdminRoute = ({children}) => {
 
+    const {user, isLoggedInUser} = useSelector((state)=>state.userReducer);
     const dispatch = useDispatch();
-    const {user, isLoading, isLoggedInUser} = useSelector((state)=>state.userReducer);
-    const {data} = useLoadUserQuery();
-
+    const data = useLoaderData();
+    
     useEffect(()=>{
-        if(data){
-          dispatch(logInUser(data?.activeUser));
-        }
-      },[data,user,isLoading, isLoggedInUser, children])
+    
+        if(data.status === 401){
 
+            dispatch(logOutUser());
+            toast.error("please login again")
+            return <Navigate to="/login" replace={true}/>
+
+        }
+          dispatch(logInUser(data))
     
+      },[data])
     
-    if(isLoading) {
-       <Loader/>;
-    }
-    if(user && user.role === 'user'){
-        return <Navigate to={'/'} replace={true}/>
-    }
-    if(!user){
+    if(!data){
+        
         return <Navigate to={'/login'} replace={true}/>
     }
-        return children;
-
+    if(data && data?.role === 'user'){
+        return <Navigate to={'/'} replace={true}/>
+    }
+    return children;
 
 }
 
