@@ -5,6 +5,7 @@ import { logInUser, logOutUser } from '../../redux/reducers/userReducer';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useMyCartItemsQuery } from '../../redux/Api/cartApi';
+import Loader from '../Loader/Loader';
 
 
 const ProtectedRoute = ({ children }) => { 
@@ -27,6 +28,9 @@ const ProtectedRoute = ({ children }) => {
 
   },[userdata,dispatch,children,isLoggedInUser])
 
+  if(isLoading){
+    return <Loader/>
+  }
   if(userdata[0] || isLoggedInUser){
     return children;
   }
