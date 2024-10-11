@@ -18,7 +18,7 @@ const ProtectedRoute = ({ children }) => {
   
   useEffect(()=>{
 
-    if(userdata?.status === 401){
+    if(userdata.status === 401){
         dispatch(logOutUser());
         toast.error("please login again")
         return <Navigate to="/login" replace={true}/>
