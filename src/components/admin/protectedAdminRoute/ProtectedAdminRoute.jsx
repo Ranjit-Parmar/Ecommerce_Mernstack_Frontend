@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom"
 import { useLoadUserQuery } from "../../../redux/Api/userApi";
 
   
 const ProtectedAdminRoute = ({children}) => {
 
+    const dispatch = useDispatch();
     const {user} = useSelector((state)=>state.userReducer);
     const {data, isLoading, isError} = useLoadUserQuery();
 
