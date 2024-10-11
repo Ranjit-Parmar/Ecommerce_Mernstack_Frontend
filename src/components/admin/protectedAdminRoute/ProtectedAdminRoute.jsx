@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom"
 import { useLoadUserQuery } from "../../../redux/Api/userApi";
+import { useEffect } from "react";
 
   
 const ProtectedAdminRoute = ({children}) => {

@@ -2,6 +2,7 @@ import { Navigate } from 'react-router-dom';
 import {  useDispatch, useSelector } from 'react-redux';
 import { useLoadUserQuery } from '../../redux/Api/userApi';
 import { useMyCartItemsQuery } from '../../redux/Api/cartApi';
+import { useEffect } from 'react';
 
 
 const ProtectedRoute = ({ children }) => { 
