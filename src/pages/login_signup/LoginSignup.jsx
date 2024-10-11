@@ -33,7 +33,7 @@ const LoginSignup = () => {
 
   useEffect(() => {
 
-    if (user) Navigate('/', { replace: true });
+    if (!isLoading && user) Navigate('/', { replace: true });
 
       dispatch(logOutUser(null))
     
