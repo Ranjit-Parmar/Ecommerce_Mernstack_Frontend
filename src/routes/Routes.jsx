@@ -37,11 +37,9 @@ import { Toaster } from 'react-hot-toast';
 import { loadUser } from '../redux/reducers/userReducer.js';
 import { fetchItems, getStripeKey } from '../redux/reducers/cartReducer.js';
 import Spinner from '../components/Spinner/Spinner.jsx';
-import { useMyCartItemsQuery } from '../redux/Api/cartApi.js';
 
 const Routes = () => {
     
-    const {data, isLoading, isError} = useMyCartItemsQuery();
 
     const router = createBrowserRouter([
         {
@@ -49,8 +47,7 @@ const Routes = () => {
            loader: async () => {
             try{
             let userData = await loadUser()
-            let cartData = data?.cartItem;
-            return [userData, cartData] || null
+            return userData || null
             }catch(err){
               return err;
             }
