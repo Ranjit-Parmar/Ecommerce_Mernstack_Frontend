@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // USER ROUTES
+const App = lazy(()=> import('../App.jsx'))
 const LoginSignup = lazy(()=> import('../pages/login_signup/LoginSignup.jsx'))
 const Home = lazy (()=> import('../pages/home/Home.jsx'))
 const ShopCategory = lazy(()=> import('../pages/shop_category/ShopCategory.jsx'))
