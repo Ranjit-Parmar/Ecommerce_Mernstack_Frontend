@@ -24,7 +24,7 @@ const CartItems = ({cartItems,incrementHandler,decrementHandler,removeHandler}) 
               <span className='border-gray-400 border-2 w-8'>{cartItems.quantity}</span> 
               <button className='text-2xl bg-orange-500 w-8 hover:bg-orange-700' onClick={()=>{incrementHandler(cartItems)}}>+</button>
             </div>
-            <div className='w-[15px] my-0 mx-10 cursor-pointer' onClick={()=>{removeHandler(cartItems)}}><RxCross1/></div>
+            <div className='w-[15px] my-0 mx-10 cursor-pointer' onClick={removeHandler(cartItems)}><RxCross1/></div>
           </div>
           <hr />
         </div>
@@ -35,7 +35,7 @@ const CartItems = ({cartItems,incrementHandler,decrementHandler,removeHandler}) 
           <div className=' bg-white'>
 
             <div className=' relative'>            
-            <div className='absolute right-1 top-1 z-10' onClick={()=>{removeHandler(cartItems)}}><RxCross1/></div>
+            <div className='absolute right-1 top-1 z-10' onClick={removeHandler(cartItems)}><RxCross1/></div>
             <div className="flex gap-2 items-stretch justify-start flex-nowrap ">
             <Link to={`/productdetail/${product._id}`}>
                 <img src={product?.photo[0]?.url} alt="" className='w-full' />
