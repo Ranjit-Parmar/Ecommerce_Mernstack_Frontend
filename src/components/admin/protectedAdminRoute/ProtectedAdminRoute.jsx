@@ -19,6 +19,7 @@ const ProtectedAdminRoute = ({children}) => {
 
     },[data, dispatch, children])
     
+    if(isLoading) 'Loading...'
     if(!user){
         
         return <Navigate to={'/login'} replace={true}/>

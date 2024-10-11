@@ -17,6 +17,7 @@ const ProtectedRoute = ({ children }) => {
 
     useEffect(()=>{
 
+      
         if(data){
             dispatch(logInUser(data?.activeUser));
             dispatch(fetchCartItems(cartData?.cartItem));
@@ -25,6 +26,7 @@ const ProtectedRoute = ({ children }) => {
     },[data, dispatch, children])
     
 
+  if(isLoading) 'Loading...'
   if(user || isLoggedInUser){
     return children;
   }
