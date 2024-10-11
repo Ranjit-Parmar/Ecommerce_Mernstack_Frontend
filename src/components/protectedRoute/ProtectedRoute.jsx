@@ -14,12 +14,6 @@ const ProtectedRoute = ({ children }) => {
   const dispatch = useDispatch();
   const userdata = useLoaderData();
 
-  useEffect(()=>{
-    if(data){
-      setCartData(data?.cartItem)
-    }
-  },[userdata])
-
   
   useEffect(()=>{
     
@@ -34,6 +28,13 @@ const ProtectedRoute = ({ children }) => {
     
 
   },[userdata,dispatch,children,isLoggedInUser])
+
+
+  useEffect(()=>{
+    if(data){
+      setCartData(data?.cartItem)
+    }
+  },[userdata])
 
   if(userdata || isLoggedInUser){
     return children;
