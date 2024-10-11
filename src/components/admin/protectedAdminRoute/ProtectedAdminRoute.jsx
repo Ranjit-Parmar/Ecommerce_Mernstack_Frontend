@@ -13,21 +13,22 @@ const ProtectedAdminRoute = ({children}) => {
 
     useEffect(()=>{
 
+        
         if(data){
             dispatch(logInUser(data?.activeUser));
         }
 
     },[data, dispatch, children])
     
-    if(isLoading) 'Loading...'
-    if(!user){
-        
+    if(isLoading) {
+       return 'Loading...';
+    }else if(!user){
         return <Navigate to={'/login'} replace={true}/>
-    }
-    if(user && user?.role === 'user'){
+    }else if(user && user?.role === 'user'){
         return <Navigate to={'/'} replace={true}/>
+    }else{
+        return children;
     }
-    return children;
 
 }
 
