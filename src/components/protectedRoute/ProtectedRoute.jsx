@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logInUser, logOutUser } from '../../redux/reducers/userReducer';
 import { useEffect } from 'react';
 import toast from "react-hot-toast";
+import { useMyCartItemsQuery } from '../../redux/Api/cartApi';
 
 
 const ProtectedRoute = ({ children }) => { 
@@ -11,18 +12,18 @@ const ProtectedRoute = ({ children }) => {
   const {isLoggedInUser} = useSelector((state)=>state.userReducer);
   const dispatch = useDispatch();
   const userdata = useLoaderData();
-
+  const {data, isLoading, isError} = useMyCartItemsQuery();
   
   
   useEffect(()=>{
 
-    if(userdata[0]?.status === 401){
-        dispatch(logOutUser());
-        toast.error("please login again")
-        return <Navigate to="/login" replace={true}/>
-    }
+    if(userdata[0]){
       dispatch(logInUser(userdata[0]))
       dispatch(fetchCartItems(userdata[1]))
+    }
+    dispatch(logOutUser());
+    toast.error("please login again")
+    return <Navigate to="/login" replace={true}/>
     
   },[userdata,dispatch,children,isLoggedInUser])
 
