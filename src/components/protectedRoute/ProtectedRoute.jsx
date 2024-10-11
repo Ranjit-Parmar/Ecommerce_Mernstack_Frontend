@@ -18,7 +18,10 @@ const ProtectedRoute = ({ children }) => {
 
     useEffect(()=>{
 
-      
+
+      if(isLoading){
+        return <Loader/>
+      }
       
         if(data){
             dispatch(logInUser(data?.activeUser));
@@ -30,11 +33,12 @@ const ProtectedRoute = ({ children }) => {
 
   if(isLoading) {
     <Loader/>;
-  }else if(user || isLoggedInUser){
-    return children;
-  }else{
-    return <Navigate to={'/login'} replace={true}/>
   }
+ if(user || isLoggedInUser){
+    return children;
+  }
+  return <Navigate to={'/login'} replace={true}/>
+  
 
 
 }
