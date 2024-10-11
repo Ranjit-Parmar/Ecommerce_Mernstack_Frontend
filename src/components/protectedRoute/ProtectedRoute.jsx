@@ -22,7 +22,7 @@ const ProtectedRoute = ({ children }) => {
             dispatch(fetchCartItems(cartData?.cartItem));
         }
 
-    },[data, dispatch])
+    },[data, dispatch, children])
     
 
   if(user || isLoggedInUser){
