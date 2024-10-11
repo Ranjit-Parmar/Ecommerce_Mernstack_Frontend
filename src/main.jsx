@@ -1,10 +1,10 @@
 import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // USER ROUTES
+const App = lazy(()=> import('./App.jsx'));
 const LoginSignup = lazy(()=> import('./pages/login_signup/LoginSignup.jsx'))
 const Home = lazy (()=> import('./pages/home/Home.jsx'))
 const ShopCategory = lazy(()=> import('./pages/shop_category/ShopCategory.jsx'))
@@ -41,7 +41,7 @@ import ShopContextProvider from './context/ShopContext.jsx'
 import { Provider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { loadUser } from './redux/reducers/userReducer.js';
-import { fetchItems, getStripeKey } from './redux/reducers/cartReducer.js';
+import { getStripeKey } from './redux/reducers/cartReducer.js';
 import Spinner from './components/Spinner/Spinner.jsx';
 
 
@@ -51,9 +51,8 @@ const router = createBrowserRouter([
     path: "/",
      loader: async () => {
       try{
-      let userData = await loadUser()
-      let cartData = await fetchItems()
-      return [userData, cartData] || null
+      return await loadUser()
+    
       }catch(err){
         return err;
       }

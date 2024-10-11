@@ -18,12 +18,12 @@ const ProtectedRoute = ({ children }) => {
   
   useEffect(()=>{
 
-    if(userdata[0]?.status === 401){
+    if(userdata?.status === 401){
         dispatch(logOutUser());
         toast.error("please login again")
         return <Navigate to="/login" replace={true}/>
     }
-      dispatch(logInUser(userdata[0]))
+      dispatch(logInUser(userdata))
 
     if(data?.cartItem){
       dispatch(fetchCartItems(data?.cartItem))
@@ -32,7 +32,7 @@ const ProtectedRoute = ({ children }) => {
 
   },[userdata,dispatch,children,isLoggedInUser,data,isLoading])
 
-  if(userdata[0] || isLoggedInUser){
+  if(userdata || isLoggedInUser){
     return children;
   }
 
