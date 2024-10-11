@@ -1,4 +1,5 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
+import { useDispatch } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // USER ROUTES
@@ -34,30 +35,32 @@ const EditAdminProfile = lazy (()=> import('../components/admin/edit_profile/Edi
 const Add_Edit_Coupon = lazy (()=> import('../components/admin/add_edit_coupon/Add_Edit_Coupon.jsx'))
 const ProtectedAdminRoute = lazy (()=> import('../components/admin/protectedAdminRoute/ProtectedAdminRoute.jsx'))
 import { Toaster } from 'react-hot-toast';
-import { loadUser } from '../redux/reducers/userReducer.js';
-import { fetchItems, getStripeKey } from '../redux/reducers/cartReducer.js';
+import { loadUser, logInUser } from '../redux/reducers/userReducer.js';
+import { fetchCartItems, fetchItems, getStripeKey } from '../redux/reducers/cartReducer.js';
 import Spinner from '../components/Spinner/Spinner.jsx';
 import { useLoadUserQuery } from '../redux/Api/userApi.js';
 import { useMyCartItemsQuery } from '../redux/Api/cartApi.js';
 
+
 const Routes = () => {
 
+    const dispatch = useDispatch();
     const {data, isLoading, isError} = useLoadUserQuery();
-    const {data : cartData, isLoading : cartIsLoading, isError : cartIsError} = useMyCartItemsQuery();
+    const {data : cartData, isLoading : cartIsLoading, isError : cartIsError} = useMyCartItemsQuery(); 
+
+    useEffect(()=>{
+
+        if(data){
+            dispatch(logInUser(data?.activeUser));
+            dispatch(fetchCartItems(cartData?.cartItem));
+        }
+
+    },[data, dispatch])
+    
 
     const router = createBrowserRouter([
         {
           path: "/",
-           loader: async () => {
-            try{
-               let userData =  data?.activeUser;
-               let userCartData = cartData?.cartItem;
-                 return [userData, userCartData] || null
-            }catch(err){
-              return err;
-            }
-            
-          },
           element: <>
               <Toaster />
               <ProtectedRoute>
