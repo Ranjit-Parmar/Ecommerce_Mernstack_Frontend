@@ -102,7 +102,6 @@ const Cart = () => {
     const {data} = await axios(option);
     if(data?.success){
       toast.success(data?.message)
-      dispatch(fetchCartItems(cartItems))
     }else{
       toast.error('something went wrong')
     }
