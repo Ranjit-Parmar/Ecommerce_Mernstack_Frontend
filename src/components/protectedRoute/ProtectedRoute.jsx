@@ -31,7 +31,7 @@ const ProtectedRoute = ({ children }) => {
 
 
   useEffect(()=>{
-    if(data){
+    if(data?.cartItem){
       setCartData(data?.cartItem)
     }
   },[userdata])
