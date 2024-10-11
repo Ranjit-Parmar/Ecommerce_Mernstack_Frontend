@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom"
 import { useLoadUserQuery } from "../../../redux/Api/userApi";
 import { useEffect } from "react";
+import { logInUser } from "../../../redux/reducers/userReducer";
 
   
 const ProtectedAdminRoute = ({children}) => {

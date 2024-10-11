@@ -3,6 +3,8 @@ import {  useDispatch, useSelector } from 'react-redux';
 import { useLoadUserQuery } from '../../redux/Api/userApi';
 import { useMyCartItemsQuery } from '../../redux/Api/cartApi';
 import { useEffect } from 'react';
+import { logInUser } from '../../redux/reducers/userReducer';
+import { fetchCartItems } from '../../redux/reducers/cartReducer';
 
 
 const ProtectedRoute = ({ children }) => { 
