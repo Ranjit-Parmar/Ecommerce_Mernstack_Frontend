@@ -1,35 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useLoaderData } from "react-router-dom"
-import { logInUser, logOutUser } from "../../../redux/reducers/userReducer";
-import { useEffect } from "react";
-import toast from "react-hot-toast";
-
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom"
 
   
 const ProtectedAdminRoute = ({children}) => {
 
-    const {user, isLoggedInUser} = useSelector((state)=>state.userReducer);
-    const dispatch = useDispatch();
-    const data = useLoaderData();
+    const {user} = useSelector((state)=>state.userReducer);
     
-    useEffect(()=>{
-    
-        if(data.status === 401){
-
-            dispatch(logOutUser());
-            toast.error("please login again")
-            return <Navigate to="/login" replace={true}/>
-
-        }
-          dispatch(logInUser(data))
-    
-      },[data])
-    
-    if(!data){
+    if(!user){
         
         return <Navigate to={'/login'} replace={true}/>
     }
-    if(data && data?.role === 'user'){
+    if(user && user?.role === 'user'){
         return <Navigate to={'/'} replace={true}/>
     }
     return children;
