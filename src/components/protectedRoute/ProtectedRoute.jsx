@@ -10,8 +10,13 @@ const loadUserData = async () => {
   const userData = await loadUser();
   return userData;
 }
-const a = loadUserData();
-console.log(a);
+loadUserData().then((a)=>{
+  console.log(a);
+}).catch((e)=>{
+  console.log(e);
+  
+});
+
 
 
 const ProtectedRoute = ({ children }) => { 
