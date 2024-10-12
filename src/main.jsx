@@ -49,6 +49,13 @@ import Spinner from './components/Spinner/Spinner.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
+    loader : async () => {
+      try {
+        return loadUser();
+      } catch (error) {
+        return error
+      }
+    },
     element: <>
         <Toaster />
         <ProtectedRoute>
@@ -131,6 +138,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
+    loader : async () => {
+      try {
+        return loadUser();
+      } catch (error) {
+        return null;
+      }
+    },
     element: <>
       <Toaster />
       <ProtectedAdminRoute>

@@ -14,6 +14,7 @@ const loadUserData = async () => {
 const ProtectedAdminRoute = ({children}) => {
 
     const [userData, setUserData] = useState(null);
+    const loadUserData  = useLoaderData();
 
   useEffect(()=>{
     loadUserData().then((a)=>{
@@ -23,7 +24,7 @@ const ProtectedAdminRoute = ({children}) => {
     });
   },[])
 
-  if(userData.role === 'user'){
+  if(loadUserData && userData.role === 'user'){
     return <Navigate to='/' replace={true}/>
   }else{
     return children

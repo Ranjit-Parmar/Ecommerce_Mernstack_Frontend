@@ -21,6 +21,7 @@ const ProtectedRoute = ({ children }) => {
   const {user, isLoading, isLoggedInUser} = useSelector((state)=>state.userReducer);
   const dispatch = useDispatch();
   const [userData, setUserData] = useState(null);
+  const loadUserData = useLoaderData();
 
   useEffect(()=>{
     loadUserData().then((a)=>{
@@ -34,7 +35,7 @@ const ProtectedRoute = ({ children }) => {
   console.log(userData);
   
 
-  if(isLoggedInUser && userData){
+  if(loadUserData && userData){
     return children;
   }
     return <Navigate to='/login' replace={true}/>
