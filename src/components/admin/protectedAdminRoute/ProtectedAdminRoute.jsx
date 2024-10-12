@@ -19,7 +19,7 @@ const ProtectedAdminRoute = ({children}) => {
     loadUserData().then((a)=>{
       setUserData(a)
     }).catch((e)=>{
-      console.log(e); 
+      setUserData(null)
     });
   },[])
 
@@ -28,7 +28,7 @@ const ProtectedAdminRoute = ({children}) => {
   }else{
     return children
   }
-  
+
 
    
 

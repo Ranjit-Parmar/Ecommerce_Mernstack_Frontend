@@ -28,7 +28,7 @@ const ProtectedRoute = ({ children }) => {
       dispatch(logInUser(userData))
       setUserData(a)
     }).catch((e)=>{
-      console.log(e); 
+      setUserData(null)
     });
   },[user, dispatch, userData])
 
