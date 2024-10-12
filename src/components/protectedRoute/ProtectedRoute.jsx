@@ -31,6 +31,8 @@ const ProtectedRoute = ({ children }) => {
       setUserData(null)
     });
   },[user, dispatch, userData])
+  console.log(userData);
+  
 
   if(isLoggedInUser && userData){
     return children;
