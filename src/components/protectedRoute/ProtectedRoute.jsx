@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children }) => {
 
 
   useEffect(()=>{
-    console.log(userData);
+    console.log(loadUserData);
     
   },[children,loadUserData])
 }
