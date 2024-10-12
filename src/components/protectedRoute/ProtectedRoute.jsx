@@ -17,21 +17,26 @@ const loadUserData = async () => {
 
 const ProtectedRoute = ({ children }) => { 
 
+  
+  const {user, isLoading, isLoggedInUser} = useSelector((state)=>state.userReducer);
+  const dispatch = useDispatch();
   const [userData, setUserData] = useState(null);
 
   useEffect(()=>{
     loadUserData().then((a)=>{
+      
+      dispatch(logInUser(userData))
       setUserData(a)
     }).catch((e)=>{
       console.log(e); 
     });
   },[])
 
-  if(userData){
+  if(isLoggedInUser && userData){
     return children;
-  }else{
-    return <Navigate to='/login' replace={true}/>
   }
+    return <Navigate to='/login' replace={true}/>
+  
 
 }
 

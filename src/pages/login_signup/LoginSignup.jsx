@@ -31,19 +31,19 @@ const LoginSignup = () => {
   const passwordRef = useRef(null);
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (isLoading) Navigate('/', { replace: true });
+  //   if (isLoading) Navigate('/', { replace: true });
 
-      dispatch(logOutUser(null))
+  //     dispatch(logOutUser(null))
     
-      dispatch(resetCart());
+  //     dispatch(resetCart());
 
-      dispatch(fetchCartItems([]))
+  //     dispatch(fetchCartItems([]))
 
-      localStorage.clear()
+  //     localStorage.clear()
 
-  }, [isLoading])
+  // }, [isLoading])
 
 
   const submitHandler = async (e) => {
