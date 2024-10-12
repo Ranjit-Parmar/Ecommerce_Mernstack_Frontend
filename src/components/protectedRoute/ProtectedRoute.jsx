@@ -14,6 +14,7 @@ const ProtectedRoute = ({ children }) => {
 
   
   useEffect(()=>{
+    console.log('protected route called');
     
     if(userdata[0]?.status === 401){
         dispatch(logOutUser());
