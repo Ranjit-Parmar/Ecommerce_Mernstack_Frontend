@@ -49,16 +49,6 @@ import Spinner from './components/Spinner/Spinner.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-     loader: async () => {
-      try{
-      let userData = await loadUser()
-      let cartData = await fetchItems()
-      return [userData, cartData] || null
-      }catch(err){
-        return err;
-      }
-      
-    },
     element: <>
         <Toaster />
         <ProtectedRoute>
