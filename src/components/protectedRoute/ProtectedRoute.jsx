@@ -10,14 +10,14 @@ const loadUserData = async () => {
   const userData = await loadUser();
   return userData;
 }
+const a = loadUserData();
+console.log(a);
+
 
 const ProtectedRoute = ({ children }) => { 
 
 
-  useEffect(()=>{
-    console.log(loadUserData);
-    
-  },[children,loadUserData])
+ 
 }
 
 export default ProtectedRoute;
