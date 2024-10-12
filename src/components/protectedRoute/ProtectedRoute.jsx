@@ -30,7 +30,7 @@ const ProtectedRoute = ({ children }) => {
     }).catch((e)=>{
       console.log(e); 
     });
-  },[])
+  },[user, dispatch, userData])
 
   if(isLoggedInUser && userData){
     return children;
