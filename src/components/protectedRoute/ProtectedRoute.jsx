@@ -23,19 +23,8 @@ const ProtectedRoute = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const loadData = useLoaderData();
 
-  useEffect(()=>{
-    loadUserData().then((a)=>{
-      
-      dispatch(logInUser(userData))
-      setUserData(a)
-    }).catch((e)=>{
-      setUserData(null)
-    });
-  },[user, dispatch, userData])
-  console.log(userData);
   
-
-  if(loadData && userData){
+  if(loadData){
     return children;
   }
     return <Navigate to='/login' replace={true}/>
