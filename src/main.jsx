@@ -131,13 +131,6 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    loader: async () => {
-      try {
-        return await loadUser()
-      } catch (err) {
-        return err;
-      }
-    },
     element: <>
       <Toaster />
       <ProtectedAdminRoute>
