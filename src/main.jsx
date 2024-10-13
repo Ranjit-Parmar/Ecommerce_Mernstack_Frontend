@@ -53,6 +53,8 @@ const router = createBrowserRouter([
       try{
       let userData = await loadUser()
       let cartData = await fetchItems()
+      console.log('loader is called');
+      
       return [userData, cartData] || null
       }catch(err){
         return err;
