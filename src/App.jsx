@@ -3,14 +3,28 @@ import { Outlet } from 'react-router-dom';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { useMyCartItemsQuery } from './redux/Api/cartApi';
+import Loader from './components/Loader/Loader';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchCartItems } from './redux/reducers/cartReducer';
 
 
 
 function App() {
   
+  const {data, isLoading, isError} = useMyCartItemsQuery();
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+
+    dispatch((fetchCartItems(data?.cartItem || [])))
+
+  },[data, isLoading])
+
   
   return (
-     <>
+     isLoading? <Loader/> : <>
      <HelmetProvider>
      <Helmet>
           <html lang="en" />
