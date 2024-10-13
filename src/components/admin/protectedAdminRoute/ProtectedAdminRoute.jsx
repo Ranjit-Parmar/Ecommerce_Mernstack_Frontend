@@ -13,8 +13,9 @@ const loadUserData = async () => {
   
 const ProtectedAdminRoute = ({children}) => {
 
-    const [userData, setUserData] = useState(null);
+    const {user} = useSelector((state)=>state.userReducer);
     const loadData  = useLoaderData();
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         dispatch(logInUser(loadData));
@@ -22,9 +23,12 @@ const ProtectedAdminRoute = ({children}) => {
   
   if(loadData && loadData.role === 'user'){
     return <Navigate to='/' replace={true}/>
-  }else{
-    return children
   }
+  if(loadData && loadData.role === 'admin'){
+    return children
+``}
+    return <Navigate to='/login' replace={true}/>
+  
 
 
    

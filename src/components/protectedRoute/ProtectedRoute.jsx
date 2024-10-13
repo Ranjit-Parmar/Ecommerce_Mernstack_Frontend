@@ -18,9 +18,9 @@ const loadUserData = async () => {
 const ProtectedRoute = ({ children }) => { 
 
   
-  const {user, isLoading, isLoggedInUser} = useSelector((state)=>state.userReducer);
+  // const {user, isLoading, isLoggedInUser} = useSelector((state)=>state.userReducer);
+
   const dispatch = useDispatch();
-  const [userData, setUserData] = useState(null);
   const loadData = useLoaderData();
 
   useEffect(()=>{
