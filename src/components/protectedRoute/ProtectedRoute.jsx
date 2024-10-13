@@ -25,16 +25,16 @@ const ProtectedRoute = ({ children }) => {
   
   
   useEffect(()=>{
-
-    if(loadData?.status === 401){
-      dispatch(logOutUser());
-      return <Navigate to="/login" replace={true}/>
-  }
     
     dispatch(logInUser(loadData));
 
   },[loadData, dispatch, user])
   
+
+  if(loadData?.status === 401){
+    dispatch(logOutUser());
+    return <Navigate to="/login" replace={true}/>
+  }
   if(loadData){
     return children;
   }
