@@ -49,8 +49,7 @@ const Routes = () => {
           path: "/",
            loader: async () => {
             try{
-            let userData = await loadUser()     
-            return userData || null
+                return await loadUser()
             }catch(err){
               return err;
             }
