@@ -16,6 +16,11 @@ function App() {
   const {data, isLoading, isError} = useMyCartItemsQuery();
   const dispatch = useDispatch();
 
+  if(isError){
+    console.log(isError);
+    
+  }
+
   useEffect(()=>{
 
     dispatch((fetchCartItems(data?.cartItem || [])))
