@@ -19,12 +19,10 @@ const ProtectedAdminRoute = ({children}) => {
 
     useEffect(()=>{
 
-        if(loadData.status === 401){
-            return <Navigate to='/login' replace={true}/>
-          }
+        console.log(loadData);
 
         dispatch(logInUser(loadData));
-        
+
       },[loadData, dispatch, user])
   
   if(loadData && loadData.role === 'user'){

@@ -53,6 +53,8 @@ const router = createBrowserRouter([
       try {
         return loadUser();
       } catch (error) {
+        console.log(error);
+        
         return error
       }
     },
@@ -142,7 +144,8 @@ const router = createBrowserRouter([
       try {
         return loadUser();
       } catch (error) {
-        return null;
+        console.log(error);
+        return error;
       }
     },
     element: <>
