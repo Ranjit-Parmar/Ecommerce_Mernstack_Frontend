@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import toast from 'react-hot-toast'
 import { Helmet } from 'react-helmet-async'
 import Loader from '../Loader/Loader'
+import { RxCross1 } from 'react-icons/rx'
 
 const EditProfile = () => {
     const Navigate = useNavigate()
@@ -77,6 +78,11 @@ const EditProfile = () => {
         }
     }
 
+    const removePreviewImage = (item) => {
+        setUserPhoto(userPhoto.filter((val) => {
+            return val === item;
+        }))
+    }
     
 
 
@@ -103,7 +109,8 @@ const EditProfile = () => {
                             <input type="file" name="photo" id="file-upload" className='hidden' onChange={imageChangeHandler} />
                         </div>
                     </div>
-                    {userPhoto?.length > 0 ? <div className='h-52 w-44 hover:scale-105 duration-200 mt-6 mx-auto'>
+                    {userPhoto?.length > 0 ? <div className='h-52 w-44 hover:scale-105 duration-200 mt-6 mx-auto relative'>
+                            <RxCross1 className='absolute right-0 hover:text-white hover:bg-red-500' onClick={() => { removePreviewImage(userPhoto) }} /> 
                             <img src={userPhoto} alt="" className='h-full w-full' />
                         </div>
                     : ""}
