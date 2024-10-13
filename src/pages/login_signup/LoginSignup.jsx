@@ -43,7 +43,7 @@ const LoginSignup = () => {
 
       localStorage.clear()
 
-  }, [isLoading])
+  }, [isLoading, user])
 
 
   const submitHandler = async (e) => {
