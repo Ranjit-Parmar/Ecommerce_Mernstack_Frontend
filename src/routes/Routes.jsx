@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react'
-
 import App from '../App.jsx';
 import '../index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -49,7 +48,9 @@ const Routes = () => {
           path: "/",
            loader: async () => {
             try{
-                return await loadUser()
+            let userData = await loadUser()
+            let cartData = await fetchItems()      
+            return [userData, cartData] || null
             }catch(err){
               return err;
             }
