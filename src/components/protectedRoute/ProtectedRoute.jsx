@@ -1,14 +1,9 @@
 import { Navigate, useLoaderData } from 'react-router-dom';
-import { fetchCartItems, fetchItems } from '../../redux/reducers/cartReducer';
+import { fetchCartItems } from '../../redux/reducers/cartReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { logInUser, logOutUser } from '../../redux/reducers/userReducer';
 import { useEffect } from 'react';
 
-
-const loadCartItems = async () => {
-  const loadCart = await fetchItems();
-  return loadCart;
-}
 
 const ProtectedRoute = ({ children }) => { 
 
@@ -18,8 +13,6 @@ const ProtectedRoute = ({ children }) => {
 
   
   useEffect(()=>{
-    console.log('protected route called');
-    
     
     if(userdata[0]?.status === 401){
         dispatch(logOutUser());
