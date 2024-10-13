@@ -23,6 +23,9 @@ const ProtectedRoute = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const loadData = useLoaderData();
 
+  useEffect(()=>{
+    dispatch(logInUser(loadData));
+  },[loadData, dispatch, user])
   
   if(loadData){
     return children;
