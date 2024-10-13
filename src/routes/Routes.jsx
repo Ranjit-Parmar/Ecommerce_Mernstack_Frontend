@@ -49,9 +49,8 @@ const Routes = () => {
           path: "/",
            loader: async () => {
             try{
-            let userData = await loadUser()
-            let cartData = await fetchItems()      
-            return [userData, cartData] || null
+            let userData = await loadUser()     
+            return userData || null
             }catch(err){
               return err;
             }
