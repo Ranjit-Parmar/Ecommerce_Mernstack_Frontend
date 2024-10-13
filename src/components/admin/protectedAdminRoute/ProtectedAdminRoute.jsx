@@ -25,8 +25,8 @@ const ProtectedAdminRoute = ({children}) => {
     return <Navigate to='/' replace={true}/>
   }
   if(loadData && loadData.role === 'admin'){
-    return children
-``}
+    return children;
+}
     return <Navigate to='/login' replace={true}/>
   
 
