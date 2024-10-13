@@ -22,10 +22,10 @@ const ProtectedRoute = ({ children }) => {
 
   const dispatch = useDispatch();
   const loadData = useLoaderData();
-  console.log(loadData);
   
-
+  
   useEffect(()=>{
+    console.log('error is ',loadData);
     dispatch(logInUser(loadData));
   },[loadData, dispatch, user])
   
