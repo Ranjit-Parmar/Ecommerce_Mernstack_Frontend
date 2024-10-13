@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logInUser, logOutUser } from '../../redux/reducers/userReducer';
 import { fetchCartItems, fetchItems, resetCart } from '../../redux/reducers/cartReducer';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import Loader from '../../components/Loader/Loader';
 
 
 
@@ -101,6 +102,7 @@ const LoginSignup = () => {
   }
 
   return (
+    isLoading ? <Loader/> :
     <>
       <HelmetProvider>
         <Helmet>
