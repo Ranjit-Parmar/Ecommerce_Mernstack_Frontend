@@ -49,14 +49,15 @@ import Spinner from './components/Spinner/Spinner.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    loader : async () => {
-      try {
-        return loadUser();
-      } catch (error) {
-        console.log(error);
-        
-        return error
+     loader: async () => {
+      try{
+      let userData = await loadUser()
+      let cartData = await fetchItems()
+      return [userData, cartData] || null
+      }catch(err){
+        return err;
       }
+      
     },
     element: <>
         <Toaster />
@@ -140,12 +141,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    loader : async () => {
+    loader: async () => {
       try {
-        return loadUser();
-      } catch (error) {
-        console.log(error);
-        return error;
+        return await loadUser()
+      } catch (err) {
+        return err;
       }
     },
     element: <>
