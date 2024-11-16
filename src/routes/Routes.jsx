@@ -272,28 +272,42 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Spinner from '../components/Spinner/Spinner.jsx';
 
-const LoginSignup = lazy(() => import('../pages/login_signup/LoginSignup.jsx'));
-const Home = lazy(() => import('../pages/home/Home.jsx'));
-const ShopCategory = lazy(() => import('../pages/shop_category/ShopCategory.jsx'));
-const Product = lazy(() => import('../components/product/Product.jsx'));
-const ProductList = lazy(() => import('../pages/product_list/ProductList.jsx'));
-const Cart = lazy(() => import('../pages/cart/Cart.jsx'));
-const MyOrder = lazy(() => import('../pages/my_order/MyOrder.jsx'));
-const EditProfile = lazy(() => import('../components/edit_profile/EditProfile.jsx'));
-const Address = lazy(() => import('../pages/address/Address.jsx'));
-const OrderSummery = lazy(() => import('../pages/orderSummery/OrderSummery.jsx'));
-const Payment = lazy(() => import('../pages/payment/Payment.jsx'));
-const OrderSuccess = lazy(() => import('../pages/orderSuccess/OrderSuccess.jsx'));
-const OrderCancel = lazy(() => import('../pages/orderCancel/OrderCancel.jsx'));
-const ProtectedRoute = lazy(() => import('../components/protectedRoute/ProtectedRoute.jsx'));
-const ForgottenPassword = lazy(() => import('../pages/forgotPassword/ForgottenPassword.jsx'));
-const PageNotFound = lazy(() => import('../pages/pageNotFound/PageNotFound.jsx'));
-const ResetPassword = lazy(() => import('../pages/resetPassword/ResetPassword.jsx'));
-const ProtectedAdminRoute = lazy(() => import('../components/admin/protectedAdminRoute/ProtectedAdminRoute.jsx'));
-const Products = lazy (()=> import('../pages/admin/Products.jsx'))
-const AddProduct = lazy (()=> import('../components/admin/add_product/AddProduct.jsx'))
-const EditAdminProfile = lazy (()=> import('../components/admin/edit_profile/EditAdminProfile.jsx'))
+// USER ROUTES
+const LoginSignup = lazy(()=> import('../pages/login_signup/LoginSignup.jsx'))
+const Home = lazy (()=> import('../pages/home/Home.jsx'))
+const ShopCategory = lazy(()=> import('../pages/shop_category/ShopCategory.jsx'))
+const Product = lazy (()=> import('../components/product/Product.jsx'))
+const ProductList = lazy (()=> import('../pages/product_list/ProductList.jsx'))
+const Cart = lazy (()=> import('../pages/cart/Cart.jsx'))
+const MyOrder = lazy (()=> import('../pages/my_order/MyOrder.jsx'))
+const EditProfile = lazy (()=> import('../components/edit_profile/EditProfile.jsx'))
+const Address = lazy (()=> import('../pages/address/Address.jsx'))
+const OrderSummery = lazy (()=> import('../pages/orderSummery/OrderSummery.jsx'))
+const Payment = lazy (()=> import('../pages/payment/Payment.jsx'))
+const OrderSuccess = lazy (()=> import('../pages/orderSuccess/OrderSuccess.jsx'))
+const OrderCancel = lazy (()=> import('../pages/orderCancel/OrderCancel.jsx'))
+const ProtectedRoute = lazy (()=> import('../components/protectedRoute/ProtectedRoute.jsx'))
+const ForgottenPassword = lazy (()=> import('../pages/forgotPassword/ForgottenPassword.jsx'))
+const PageNotFound = lazy (()=> import('../pages/pageNotFound/PageNotFound.jsx'))
+const ResetPassword = lazy (()=> import('../pages/resetPassword/ResetPassword.jsx'))
+
+// ADMIN ROUTES
 const Admin = lazy (()=> import('../pages/admin/Admin.jsx'))
+const Products = lazy (()=> import('../pages/admin/Products.jsx'))
+const Users = lazy (()=> import('../pages/admin/Users.jsx'))
+const Orders = lazy (()=> import('../pages/admin/Orders.jsx'))
+const Coupon = lazy (()=> import('../pages/admin/Coupon.jsx'))
+const ProductDetails = lazy (()=> import('../pages/admin/ProductDetails.jsx'))
+const AddProduct = lazy (()=> import('../components/admin/add_product/AddProduct.jsx'))
+const UpdateProduct = lazy (()=> import('../components/admin/update_product/UpdateProduct.jsx'))
+const EditAdminProfile = lazy (()=> import('../components/admin/edit_profile/EditAdminProfile.jsx'))
+const Add_Edit_Coupon = lazy (()=> import('../components/admin/add_edit_coupon/Add_Edit_Coupon.jsx'))
+const ProtectedAdminRoute = lazy (()=> import('../components/admin/protectedAdminRoute/ProtectedAdminRoute.jsx'))
+
+import { Toaster } from 'react-hot-toast';
+import { loadUser } from '../redux/reducers/userReducer.js';
+import { fetchItems, getStripeKey } from '../redux/reducers/cartReducer.js';
+import Spinner from '../components/Spinner/Spinner.jsx';
 
 const router = createBrowserRouter([
   {
