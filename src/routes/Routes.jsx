@@ -290,6 +290,9 @@ const ForgottenPassword = lazy(() => import('../pages/forgotPassword/ForgottenPa
 const PageNotFound = lazy(() => import('../pages/pageNotFound/PageNotFound.jsx'));
 const ResetPassword = lazy(() => import('../pages/resetPassword/ResetPassword.jsx'));
 const ProtectedAdminRoute = lazy(() => import('../components/admin/protectedAdminRoute/ProtectedAdminRoute.jsx'));
+const Products = lazy (()=> import('../pages/admin/Products.jsx'))
+const AddProduct = lazy (()=> import('../components/admin/add_product/AddProduct.jsx'))
+const EditAdminProfile = lazy (()=> import('../components/admin/edit_profile/EditAdminProfile.jsx'))
 
 const router = createBrowserRouter([
   {
