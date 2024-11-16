@@ -293,6 +293,7 @@ const ProtectedAdminRoute = lazy(() => import('../components/admin/protectedAdmi
 const Products = lazy (()=> import('../pages/admin/Products.jsx'))
 const AddProduct = lazy (()=> import('../components/admin/add_product/AddProduct.jsx'))
 const EditAdminProfile = lazy (()=> import('../components/admin/edit_profile/EditAdminProfile.jsx'))
+const Admin = lazy (()=> import('../pages/admin/Admin.jsx'))
 
 const router = createBrowserRouter([
   {
