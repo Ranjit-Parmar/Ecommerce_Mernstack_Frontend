@@ -304,10 +304,10 @@ const EditAdminProfile = lazy (()=> import('../components/admin/edit_profile/Edi
 const Add_Edit_Coupon = lazy (()=> import('../components/admin/add_edit_coupon/Add_Edit_Coupon.jsx'))
 const ProtectedAdminRoute = lazy (()=> import('../components/admin/protectedAdminRoute/ProtectedAdminRoute.jsx'))
 
-import { Toaster } from 'react-hot-toast';
+
 import { loadUser } from '../redux/reducers/userReducer.js';
 import { fetchItems, getStripeKey } from '../redux/reducers/cartReducer.js';
-import Spinner from '../components/Spinner/Spinner.jsx';
+
 
 const router = createBrowserRouter([
   {
